@@ -182,13 +182,13 @@
     {
       "id": 12,
       "prompt": "Build the main 'Notes' page for Loop, our new product. It's a notes app, but this is also the page we'll point new visitors to from our launch tweet.",
-      "expected_output": "A disambiguation response, not an immediate build. The brief names two conflicting purposes — the in-product 'Notes' surface (product-app) and a page new visitors land on from a launch tweet (marketing / saas-landing) — which map to registers with opposite defaults (a product-app surface is calm and post-login; a landing converts cold visitors). Per Gate 0.5, the skill should ask exactly ONE clarifying question to lock the register before committing tokens or markup, rather than silently picking one and building it.",
+      "expected_output": "A response that surfaces the register ambiguity instead of silently committing to one and building it. The brief names two conflicting purposes — the in-product 'Notes' surface (product-app) and a page new visitors land on from a launch tweet (marketing / saas-landing) — which map to registers with opposite defaults. Per Gate 0.5 the skill must NOT silently pick one and emit a finished page; it should EITHER ask one focused clarifying question to lock the register, OR explicitly name the two competing interpretations and state which register it is assuming and why before proceeding.",
       "files": [],
       "assertions": [
-        "Output asks a clarifying question to resolve which register is intended rather than immediately producing a full implementation",
-        "The question names the competing interpretations (the in-product notes surface vs. a marketing/landing page for new visitors)",
-        "Output does not silently commit to one register and emit a full token spec or finished page before the ambiguity is resolved",
-        "Exactly one disambiguation question is asked, not an extended questionnaire"
+        "Output surfaces the register ambiguity rather than silently committing to one register and building it — it either asks a clarifying question OR explicitly states the assumed register and the reason",
+        "Output names the two competing interpretations (the in-product notes surface vs. a marketing/landing page for new visitors)",
+        "Output does not emit a full finished page for one register without acknowledging the dual-purpose conflict",
+        "If it asks a question, it asks one focused disambiguation question, not an extended questionnaire"
       ]
     },
     {

@@ -270,6 +270,7 @@ Gate 2 anchors to a named *product*; this is the named *systems* layer — the i
 | Mantine | — | batteries-included React | 120+ components/hooks, WCAG color system |
 
 ### Anchor vs. adopt vs. build (extends Phase 2)
+**Adopt is the default whenever a system is present** — inventing a palette *beside* an existing system is the single most common production regression. Only anchor-or-build when there is no system to adopt.
 - **Adopt wholesale** when the project already uses an established library (MUI/Material, Ant, Polaris, Mantine, Carbon-React, Fluent-React, shadcn/Radix): use its tokens, primitives, theming — **never a parallel palette** (the #1 Gate-3 → production drift).
 - **Anchor to** when you're *not* using that library: adopt its visual language, token naming, and pattern grammar as the bar (e.g. "anchored to Material 3 semantics"), implemented in your stack. The most common case.
 - **Build custom** only for art-direction or a true one-off — then use the §C 2026 defaults and still follow the token discipline below.
