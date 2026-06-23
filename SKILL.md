@@ -1,6 +1,6 @@
 ---
 name: repaint
-description: Build production-grade frontend UI that doesn't read as "AI-made". A self-contained pipeline — research real references, lock a register + a named anchor, commit a concrete token system (OKLCH color, distinctive type), build in your framework, then iterate against a slop-audit + live browser-screenshot feedback loop. Use for any page, component, dashboard, landing page, hero, pricing section, settings panel, data table, onboarding, or app surface — especially when output looks generic, templated, or "AI-made" and you want it to feel like Linear, Vercel, Stripe, Notion, or a real design studio. Ships a reference library (named anchors per context, 8 art-direction directions, 2026 token defaults, a slop catalog, type-by-role) and 9 evals.
+description: Build production-grade frontend UI that doesn't read as "AI-made". A self-contained pipeline — research real references, lock a register + a named anchor, commit a concrete token system (OKLCH color, distinctive type), build in your framework, then iterate against a slop-audit + live browser-screenshot feedback loop. Use for any page, component, dashboard, landing page, hero, pricing section, settings panel, data table, onboarding, or app surface — especially when output looks generic, templated, or "AI-made" and you want it to feel like Linear, Vercel, Stripe, Notion, or a real design studio. Ships a reference library (named anchors per context, 8 art-direction directions, 2026 token defaults, a slop catalog, type-by-role) and 15 evals.
 license: Apache-2.0
 metadata:
   homepage: https://github.com/LucasSantana-Dev/repaint
@@ -13,7 +13,7 @@ A self-contained pipeline for frontend UI that looks designed, not generated. It
 1. **Scraping** — research *real, current* references for the brief (your web search), not vibes.
 2. **Tokens** — commit a concrete token system (OKLCH color + distinctive type) before any markup.
 3. **References** — a curated library ([references/context-anchors.md](references/context-anchors.md)) of named anchors per context, art-direction directions, 2026 token defaults, a slop catalog, and type-by-role.
-4. **Real iteration feedback** — build → render → screenshot → slop-audit → iterate, against live browser output, not a one-shot guess. The 9 [evals](evals/evals.json) are the regression harness.
+4. **Real iteration feedback** — build → render → screenshot → slop-audit → iterate, against live browser output, not a one-shot guess. The 15 [evals](evals/evals.json) are the regression harness.
 
 ## Where this skill earns its keep
 
@@ -162,5 +162,5 @@ If any phase is BLOCKED: state the blocker + next action. If all DONE: link the 
 
 Everything heavy ships in this folder — no external skills required:
 
-- **[references/context-anchors.md](references/context-anchors.md)** — §A named anchors + tokens + per-context slop tells (e-commerce, fintech, healthcare, editorial, mobile, b2b dashboards, auth) · §B 8 art-direction directions · §C 2026 token defaults · §D extended slop catalog · §E type-by-role. **Open §A first for any non-dev-tool brief.**
-- **[evals/evals.json](evals/evals.json)** — 9 evals across all 5 registers + the regression guards (design-system-present, DESIGN.md-exists, non-dev-tool anchor, copy-compiles). Use them to verify changes to this skill don't regress.
+- **[references/context-anchors.md](references/context-anchors.md)** — §A named anchors + tokens + per-context slop tells (e-commerce, fintech, healthcare, editorial, mobile, b2b dashboards, auth, AI-chat, command palette) · §B 8 art-direction directions · §C 2026 token defaults · §D extended slop catalog · §E type-by-role. **Open §A first for any non-dev-tool brief.**
+- **[evals/evals.json](evals/evals.json)** — 15 evals across all 5 registers + the regression guards (design-system-present, DESIGN.md-exists, non-dev-tool anchor per context, accessibility, mobile thumb-zone, data-viz restraint, register disambiguation, copy-compiles), in the canonical `assertions`-as-strings eval format (`evals/files/` holds the fixtures). Use them to verify changes to this skill don't regress.

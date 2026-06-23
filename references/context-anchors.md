@@ -10,6 +10,13 @@ design-system docs, and type-foundry/editorial trend writeups. Anchors are real,
 treat their token specifics as *approximate* unless you confirm them. Where a claim was inferred
 rather than sourced it is marked `(inferred)`.
 
+**Refreshed 2026-06-23:** added the AI-chat and command-palette contexts; added 2026 slop tells
+(bento-outside-landing, gradient-on-data, over-animation, pixel-font-as-body, default variable fonts);
+re-verified anchors — Linear, Warby Parker, Aesop, the fintech set, the healthcare set, and Material 3 /
+Carbon all still current (Material 3 added an "Expressive" layer but kept semantic color intact); flagged
+Medium's shift to a system serif and Glossier's unconfirmed 2026 direction. The purple→blue gradient is
+*confirmed* across 2026 sources as the single most common AI-UI tell.
+
 ---
 
 ## A. Context → register, anchors, tokens, must-haves, tells
@@ -18,7 +25,7 @@ Pick the row matching the brief. The **anchor** is the named bar to hit; the **t
 that *specific* context read as AI-made.
 
 ### E-commerce product detail (DTC / retail) — register `marketing`/`ecommerce`
-- **Anchors:** Warby Parker (editorial product discipline), Nike (scroll-revealed product story), Aesop / Glossier (warm-minimal retail).
+- **Anchors:** Warby Parker (editorial product discipline — the brand's edge is its product/features; the *web* lesson is presentation restraint), Nike (scroll-revealed product story), Aesop (quiet, typography-led, calm motion). *(Glossier was the classic pairing but its current direction is unconfirmed for 2026 — verify before anchoring to it.)*
 - **Tokens:** warm-neutral ground (not dark dev-tool); serif or characterful sans for product name + clean sans for price/CTA; 24–32px section gaps, 80–120px between major blocks; *intentionally varied* card spacing, not uniform 16px radius everywhere.
 - **Must-haves:** gallery with zoom; variant selectors (shade/size) with live preview; price + add-to-cart above the fold; reviews/social proof *before* the CTA; real product photography, never AI-smooth stock.
 - **Tells:** uniform 16px radius on everything; stock "diverse team" photos; vague copy ("elevate your routine"); purple→blue gradient; missing a real product image.
@@ -36,7 +43,7 @@ that *specific* context read as AI-made.
 - **Tells:** generic "doctor in white coat" imagery; hedging copy; missing trust badges; unexplained medical jargon; anxiety-inducing reds; cramped density.
 
 ### Editorial / long-form article — register `marketing` (editorial)
-- **Anchors:** Medium, Substack, The Verge / classic magazine features.
+- **Anchors:** Substack (serif body + author-controlled branding), The Verge (custom type + real imagery), ProPublica (Tiempos, institutional rigor), classic magazine features. *(Medium shifted to a system serif ~2024–25, so it is no longer the custom-serif exemplar — keep Lyon/Tiempos/GT Sectra as the type benchmark, not Medium's own stack.)*
 - **Tokens:** **serif body** (Tiempos, Lyon, GT Sectra, Editorial New, Spectral, Cormorant) at **1.5–1.65 line-height**, measure **~60–75 chars (650–800px)**; sans only for UI/metadata; 80–120px side margins; paragraph spacing ~1.5–2× line-height; **no cards/boxes around prose**.
 - **Must-haves:** headline + byline + read-time; hero image; pull-quotes; section breaks; related-stories footer (not a competing sidebar).
 - **Tells:** system serif (Georgia) with no personality; cards around text; AI-smooth article illustrations; "The Ultimate Guide to…" headings; filler ("In today's world").
@@ -64,6 +71,18 @@ that *specific* context read as AI-made.
 - **Tokens:** display headline 40–80px; one accent on a committed light or dark hero; 80–120px section padding; real product screenshots/video over mockups.
 - **Must-haves:** hero (headline + sub + CTA + product visual); features 3–4 col; trust signals (named logos, G2/specific metrics); pricing/comparison if relevant; founder voice.
 - **Tells:** "Build the future of work"/"Scale without limits"; stock office photo; rounded-corner-everything; purple→blue gradient; no named/measurable proof.
+
+### AI / LLM chat & agent interface — register `product-app` (ai-chat)
+- **Anchors:** ChatGPT (streaming thread + left-rail history), Claude.ai (centered ~768px measure, side artifact panel), Perplexity (citation-forward, numbered inline sources), Raycast AI (compact, OS-native density), v0 (prompt → live code + preview).
+- **Tokens:** dark-first baseline; one restrained action accent (teal/blue), **never a purple→blue gradient** (the #1 AI-UI tell); semantic status (error/success/warn/info); full-width message containers on a subtle ground, *not* chat bubbles everywhere; mono (JetBrains Mono, Geist Mono) for code; body 16px / 1.6; a committed sans, not Inter-by-default; radius varied by role (don't paint 16px on everything).
+- **Must-haves:** streaming output (token-by-token) with a **stop** control; a growing multiline composer (Cmd/Ctrl+Enter to send); a per-message action row (copy, edit, regenerate); markdown with syntax-highlighted, copy-able code blocks; citations as numbered footnotes / inline links (Perplexity); left-rail conversation history grouped by date (Today / Yesterday / 7d+); a model picker if multi-model; explicit error recovery (stop, retry, visible failure).
+- **Tells:** purple→blue gradient; the generic **"centered input + sparkle icon + 'How can I help you today?'"** template dropped into an unrelated domain; chat-bubble UI forced everywhere; no streaming affordance (waits for the full response — feels broken); visible markdown artifacts mid-stream (half-open code fences); uniform 16px radius; Inter/system-by-default; vague "Ask anything" over specific capability language.
+
+### Command palette / action launcher — register `product-app` (utility)
+- **Anchors:** Superhuman (centered modal, monospaced commands, icon per row, toggle), Linear (Cmd+K convention, fuzzy + context-aware filtering), VS Code / Figma (the power-user baseline users now expect).
+- **Tokens:** inherit the app theme; subtle backdrop (app bg + opacity, not a heavy black scrim); selected row uses the app accent; **no gradients**; a monospaced or tight UI face for commands (JetBrains / IBM Plex / Geist Mono); rows 40–48px (touch ≥44px); centered modal 500–700px desktop, near-full-width mobile.
+- **Must-haves:** Cmd+K trigger (same shortcut toggles open/closed); fuzzy search with typo tolerance, not exact-match; an icon per command; context-aware filtering (hide commands unavailable in the current state/role); action-focused titles (Create…, Find…, Export…) with aliases for discoverability; displayed keyboard shortcuts; an overflow hint (more below the fold); focus restoration on close.
+- **Tells:** a bare text-only list with no icons or hierarchy; the default system font (loses the "powerful tool" signal); no shortcuts shown; a corner dropdown instead of a centered modal; exact-match-only search; generic category names ("Features", "Tools") instead of verbs.
 
 ---
 
@@ -110,6 +129,11 @@ shadow, em dashes, and emoji-as-icons. Add these, confirmed across 2026 trend so
 - **Algorithmic HSL color ramps** — evenly-stepped lightness ladders with no human curation; tells as generated. Curate with reasoning (warm vs cool, where saturation goes).
 - **Uniform-everything** — identical radius + identical padding on every element. Vary by role.
 - **Vague/averaging copy** — "Scale", "Transform", "Seamlessly integrate", "Build the future of X". Replace with specific, measurable, founder-voiced lines.
+- **Bento outside its lane** — the bento grid is a *landing-page* device. On a product-app dashboard, a dense data table, or a product-detail page it reads as trend-chasing; those registers want scannable hierarchy and functional density, not modular tiles. (Extends the base generic-bento ban to non-landing registers.)
+- **Gradient on data** — gradient-filled chart series, or the "big hero metric + gradient accent line" pattern (now in ~90% of generated SaaS dashboards). Numbers and data viz take *solid semantic* color; a gradient on a value is decoration that costs clarity.
+- **Over-animation on dense UI** — Framer Motion / Motion.dev / Spline make it trivial to animate everything; on dashboards, tables, and feeds that obscures scannability. Motion is for feedback and state change, not decoration on information-dense surfaces.
+- **Pixel / bitmap display fonts as body** *(critical)* — Geist Pixel and similar bitmap faces are a real 2026 trend but **logotype/campaign-only**; using them for body text, sustained reading, or any accessibility-critical copy is an instant tell.
+- **Variable fonts left at defaults** — loading a variable face (GT Flexa, etc.) but never setting weight/width/optical-size reads as "installed the tech without designing with it." Variable fonts demand intentional axis choices.
 
 ---
 
@@ -118,8 +142,11 @@ shadow, em dashes, and emoji-as-icons. Add these, confirmed across 2026 trend so
 - **Display (tech):** Geist, Neue Montreal, GT America, Bricolage Grotesque.
 - **Display (editorial/luxury):** Editorial New, Tiempos, GT Sectra, Fraunces, Playfair Display.
 - **Body (reading):** Tiempos/Lyon/Spectral/Cormorant (serif); Geist Sans, Söhne (sans).
+- **Body (calm / wellness):** Neue Gstaad — humanist sans, soft apertures; health, eco, meditative surfaces.
 - **Functional UI:** Geist Sans, IBM Plex Sans (Inter only if `DESIGN.md` already commits to it).
 - **Mono (flavor/metrics):** JetBrains Mono, Geist Mono, GT America Mono, Söhne Mono.
+- **Never for body:** pixel/bitmap display faces (Geist Pixel) and any mono — logotype, code, and retro/zine campaigns only.
+- **2026 shift:** the field moved from geometric sans (Circular, Montserrat) to **neo-grotesque** — prefer Neue Montreal, Söhne, or the free Bricolage Grotesque for display/UI in systematic contexts.
 
 ---
 
@@ -129,3 +156,8 @@ Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/edit
 (Pangram Pangram, Grilli Type, Klim, Commercial Type; Adobe/Fontfabric/It's Nice That 2026 trend
 reports; NN/g neobrutalism). Full URL list in the research run logs. Token specifics for named
 products are approximate unless confirmed in that product's own design docs.
+
+2026-06-23 refresh drew on the AI-UI anti-pattern writeups (BSWEN AI-UX anti-patterns; Muzli "why every
+AI app looks the same"), AI-chat anatomy guides (Setproduct, thefrontkit), Superhuman's command-palette
+notes, Fontfabric's 2026 typography trends + Vercel's Geist Pixel release, the bento-in-2026 critiques,
+and primary design docs (Linear design-refresh notes, Aesop, ProPublica typography, Material 3 / m3.material.io).

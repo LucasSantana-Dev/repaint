@@ -4,7 +4,7 @@
 
 Build production-grade frontend UI that doesn't read as "AI-made" — a **self-contained** skill for agentic coding tools (Claude Code, and any agent that supports [`npx skills`](https://github.com/vercel-labs/skills)).
 
-It depends on **no other skills and no agents**. Everything ships in this repo: the pipeline (`SKILL.md`), a curated reference library (`references/`), and 9 evals (`evals/`).
+It depends on **no other skills and no agents**. Everything ships in this repo: the pipeline (`SKILL.md`), a curated reference library (`references/`), and 15 evals (`evals/`).
 
 ## Install
 
@@ -36,8 +36,8 @@ The leverage (eval-verified) is in the four places a capable model gets wrong un
 ## What's in the box
 
 - **`SKILL.md`** — the 5-phase pipeline (research → gates/tokens → scaffold → build → audit + browser-verify loop).
-- **`references/context-anchors.md`** — named anchors + tokens + per-context slop tells (e-commerce, fintech, healthcare, editorial, mobile, b2b dashboards, auth); 8 named art-direction directions; 2026 token defaults; an extended slop catalog; type-by-role.
-- **`evals/evals.json`** — 9 evals across all 5 registers + the regression guards (design-system-present, existing-`DESIGN.md`, non-dev-tool anchor, copy-compiles). Run these to check changes don't regress.
+- **`references/context-anchors.md`** — named anchors + tokens + per-context slop tells (e-commerce, fintech, healthcare, editorial, mobile, b2b dashboards, auth, AI-chat, command palette); 8 named art-direction directions; 2026 token defaults; an extended slop catalog; type-by-role.
+- **`evals/evals.json`** — 15 evals across all 5 registers + the regression guards (design-system-present, existing-`DESIGN.md`, non-dev-tool anchor per context, accessibility, mobile thumb-zone, data-viz restraint, register disambiguation, copy-compiles), in the canonical `assertions`-as-strings format (fixtures in `evals/files/`) runnable by `agent-skills-eval`. Run these to check changes don't regress.
 
 ## License
 
