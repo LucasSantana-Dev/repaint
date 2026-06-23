@@ -93,6 +93,8 @@ directions instead of inventing a vibe. Each carries real typefaces + a color st
 
 Each direction below ships **execution specs**, not just a name — type scale, tracking, leading, a color triplet, and the one signature move — so it is concrete enough to build without further clarification. (A direction named without these is "nominally specific but operationally vague" — the gap that makes art-direction output read generic.)
 
+**Scope guard:** §B is for **art-direction mode / open creative briefs only.** When a `DESIGN.md`, a shadcn `components.json`, or an established design system already owns the tokens (Phase 2 / Gate 3), it **overrides every direction below** — never pull these typefaces or color triplets into a product surface that already has a token system. Adopt the registry; don't art-direct over it.
+
 1. **Warm editorial serif** — refined, cinematic.
    - *Type:* Editorial New / Tiempos / GT Sectra / Lyon, display; a quiet humanist sans or the same serif for body.
    - *Scale:* display `clamp(2.5rem, 6vw, 5.5rem)` · tracking `-0.02em` · leading `1.05`; body leading `1.6`.
