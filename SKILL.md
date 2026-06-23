@@ -156,8 +156,11 @@ Run these on the output. Any critical finding = fix before done.
 | Clarity / identity fail | critical | 3-second scan fails OR a portfolio passes the name-swap test |
 | Purple gradient | major | violet→pink/blue gradient in the hero |
 | Bento trifecta | major | bento + dark + repeated feature blocks |
+| Split-personality surface | critical | two design systems on one page — a compact/utility section beside big editorial-hero sections that don't share type/color/framing; content behind a "more details" toggle styled unlike the main page; the same data rendered twice in two styles |
 
 **Hard bans** (instant rewrite): purple/blue gradient on white · generic bento hero (3×2 colored tiles) · identical card grid (icon + heading + 2 lines × N) · glassmorphism by default · `box-shadow: 0 4px 6px rgba(0,0,0,0.1)` as elevation · em dashes in UI copy · **emoji as UI icons** (`📊` `🔧` in cards/nav/buttons — one of the loudest "AI made that" tells; use the project's icon set or inline SVG). The extended 2026 catalog is in [context-anchors.md](references/context-anchors.md) §D.
+
+**Cohesion / type / asset bans** (instant rewrite): **two design systems on one surface** — pick one language and apply it to every section, including headers and the densest content · a **mono-only stack carrying the whole hierarchy** (monospace flattens 400↔700 contrast — pair a display face for headings, and load each face at the weights you actually use; a face loaded only at `500` has no real bold) · a **dark-on-transparent logo on a dark chip** (it vanishes — give it a light chip; normalize mixed-ratio wordmarks to a consistent size, and don't force a 6:1 wordmark into a 1:1 square) · card framing (border/shadow) leaking onto table rows · a polished SPA linking out to plain, off-brand static pages.
 
 **Five-second test:** would an engineer at Linear/Vercel/Stripe say "AI made that" within 5 seconds? If yes, return to Gate 2 and pick a stronger anchor.
 
@@ -207,6 +210,8 @@ Render it for real and look — don't trust the code alone:
 - **Interaction:** `Tab` through the page — every interactive element shows a visible focus ring, in a logical order; the primary action is reachable and fires on `Enter`/`Space`. Trigger one **error** state (is the copy specific?) and one **loading** state (does feedback appear before it resolves?). **Screenshot a loading and an error state — not just the happy path.**
 - **Accessibility & SEO:** run **axe-core** (0 critical violations) and confirm the heading outline (one `<h1>`, no skips), landmark regions, and image `alt`. For a public page, run **Lighthouse SEO** and confirm `<title>`, meta description, canonical, Open Graph, and JSON-LD are present **in the server-rendered HTML** (View Source, not DevTools).
 - **If the screenshot fails the slop audit, the experience audit, *or the a11y/SEO audit*, a console error or axe critical appears, focus is invisible/trapped, or a breakpoint breaks → return to the relevant phase, fix, and re-screenshot.** Repeat. Do not declare done on a one-shot render.
+
+**Reconcile your report against the diff (anti-overclaim).** Before declaring done, run `git diff --stat` — every change you describe must appear in it. If you only wrote a `DESIGN.md`/spec with no component/CSS edit, say *"spec only — not implemented"*, never *"redesigned"*. Verify each *"removed X"* claim by grepping the source, not from memory (you cannot claim "0 purple" while the color still matches). A report the diff contradicts is a regression.
 
 **Fallback:** if no browser is available, mark verify as PARTIAL and recommend a manual smoke test.
 
