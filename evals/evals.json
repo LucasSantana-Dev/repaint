@@ -220,6 +220,62 @@
         "The form is email-first and, for this B2B context, orders email/SSO ahead of consumer social options",
         "Designs the field and button states (error, disabled, loading) and uses >=44px targets with a full-width mobile CTA"
       ]
+    },
+    {
+      "id": 15,
+      "prompt": "Build a 'Subscribe to newsletter' form — an email input and a Subscribe button. Submitting takes about 2 seconds. Show what the form looks like while the request is in flight and what the user sees after it succeeds.",
+      "expected_output": "A form whose async interaction is honest, not silent. Should: on submit, show a perceivable loading state (a spinner or 'Subscribing…' on the button) and disable the button to prevent a double-submit; on success, show explicit human-friendly confirmation ('Thanks — check your email to confirm.') rather than a silent reset or blank state; keep the input semantic with an associated label; and never leave the user unsure whether the click registered.",
+      "files": [],
+      "assertions": [
+        "On submit, the button shows a perceivable loading state (spinner or 'Subscribing…' text), not a silent/unchanged button",
+        "The submit button is disabled during the in-flight request to prevent a double-submit",
+        "The success state shows explicit, human-friendly confirmation (e.g. 'Check your email to confirm'), not a silent redirect or blank state",
+        "Success/confirmation copy is specific and actionable, not a generic 'Success' or 'Done'",
+        "The control is a semantic button and the email input has an associated label, not a placeholder used as the label",
+        "The loading and success states are reachable in the code (wired to submit), not only styled"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Build a 'Create project' form with a Name field (required), a Slug field auto-derived from the name, and a Create button. Show the error states for: (a) submitting with an empty name; (b) a slug that already exists.",
+      "expected_output": "A form with specific, inline, actionable error copy. Should: show an empty-name error that names the field ('Project name is required'), not a generic 'Required'/'Error'; show a slug-conflict error that explains the problem and offers a next step ('That slug is taken — try another or open the existing project'); render both errors inline next to their fields, not in a modal or a vanishing toast; and never use 'Something went wrong' or a bare 'Error'.",
+      "files": [],
+      "assertions": [
+        "The empty-name error names the field specifically ('Project name is required'), not 'Required field' / 'Error' / placeholder text",
+        "The slug-conflict error states the cause AND a next action (e.g. 'That slug is taken — try another or open the existing project')",
+        "Both errors render inline next to their fields, not in a modal or an auto-dismissing toast",
+        "No error text uses 'Something went wrong' or a bare 'Error' / 'Invalid input'",
+        "Each error message tells the user the specific next action without needing the surrounding prose",
+        "Required-name validation is wired (submitting empty actually surfaces the error), not merely styled"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Build a left sidebar navigation for a product-app dashboard with five items (Dashboard, Settings, Team, Billing, Docs) and a user-avatar menu in the header that opens a dropdown (Profile, Sign out). Users must be able to operate all of it from the keyboard.",
+      "expected_output": "A keyboard-operable navigation. Should: render every interactive element with a visible :focus-visible ring (per Gate 3, >=2px at >=3:1); use semantic <button>/<a>, not <div onClick>; activate nav items on Enter and toggle the avatar menu on Enter/Space; manage focus when the dropdown opens (focus moves into it) and closes (focus returns to the avatar), with Esc to close; and keep Tab order logical (top-to-bottom). If any control is custom, document its interaction model in DESIGN.md.",
+      "files": [],
+      "assertions": [
+        "Every interactive element (nav items, avatar trigger, menu items) renders a visible focus indicator (a :focus-visible ring), not outline:none with no replacement",
+        "Interactive elements are semantic <button>/<a>, not <div>/<span> with only an onClick",
+        "Nav items activate on Enter and the avatar menu toggles on Enter/Space, not mouse-only",
+        "Focus is managed on the dropdown: it moves into the menu on open and returns to the avatar trigger on close, with Esc closing it (no focus trap or lost focus)",
+        "Tab order is logical (top-to-bottom, matching the visual order)",
+        "Any custom (non-native) control has its interaction model (focus order, keys, states) documented in DESIGN.md"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Add a 'Delete workspace' action to our settings. Deleting is permanent and removes all the workspace's data. Build the action and whatever the user sees when they trigger it.",
+      "expected_output": "A destructive flow with real recovery, not a bare delete. Should: NOT fire deletion immediately on the first click; require an explicit confirmation step (a dialog naming the exact action — 'Delete this workspace?' / 'Delete [name] forever' — with the safe option focused by default, optionally a type-to-confirm for an irreversible action); show a loading state while the delete is in flight (no silent wait); use specific, non-generic copy; and use a semantic, keyboard-operable, Esc-closable dialog. (A live undo affordance is an acceptable alternative for a recoverable delete, but a permanent one needs explicit confirmation.)",
+      "files": [],
+      "assertions": [
+        "Deletion does NOT fire immediately on the first click; it requires an explicit confirmation step (or a live undo affordance)",
+        "The confirmation names the exact action ('Delete this workspace?' / 'Delete [name] forever'), not a generic 'Are you sure?'",
+        "The safe option (Cancel) is focused by default, or the destructive action requires typing a confirm word — the destructive button is not the default-focused action",
+        "A loading state is shown while the deletion is in flight, not a silent wait",
+        "The dialog is semantic and keyboard-operable: Esc closes it and focus returns to the trigger on close",
+        "Copy is specific and buttons are clearly labeled ('Delete' / 'Cancel'), never just 'Yes' / 'No'"
+      ]
     }
   ]
 }

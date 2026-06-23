@@ -150,6 +150,62 @@ shadow, em dashes, and emoji-as-icons. Add these, confirmed across 2026 trend so
 
 ---
 
+## F. Interaction & experience patterns (elite UX)
+
+§A–§E are how it *looks*; this is how it *behaves*. These back **Gate 5** and the **experience audit**. The bar is set by products whose *experience* is the draw — Linear, Stripe, Raycast, Superhuman, Figma, Gmail. The recurring failure: the model makes it look right and leaves the interaction hollow — so this is where to spend effort.
+
+**Honest feedback & perceived performance.** Users judge speed by feedback, not milliseconds. Latency budget:
+- **<100ms** feels instant — hover/press/focus, optimistic toggles; no spinner.
+- **100–400ms** (Doherty threshold) stays "responsive" — short calls, validation.
+- **400ms–1s** show a **skeleton** (layout known) or a spinner (brief action); progress visible by ~800ms.
+- **1–10s** explicit progress (`Uploading… 3 min left`) + cancel.
+- **>10s** step progress + estimate + pause/resume.
+- **Optimistic UI** — render the action immediately (the like turns red), roll back with a message on failure. **Skeletons feel ~30–50% faster than spinners** for content; reserve spinners for brief actions. *Stripe skeletons; Twitter optimistic like; Figma `Saving…` → `Saved`.*
+
+**Keyboard-first & efficiency.** Everything operable by keyboard: `Tab`/`Shift+Tab` in a logical order, `Enter`/`Space` activate, `Esc` closes/cancels; visible focus (Gate 3 numbers — not restated here); never `<div onClick>`. A power surface (≥10 actions) earns a `Cmd+K` palette with fuzzy, typo-tolerant search. Surface shortcuts in tooltips/help. No drag-only interaction — give it a keyboard equivalent. *Linear (`Cmd+K`, `J/K`), Raycast, Superhuman.*
+
+**Error prevention & forgiving input.** Smart defaults (today's date, the signed-in name); input masks; validate **on blur or submit, not on every keystroke** (real-time only for password strength / async availability, shown as progress, not error); autosave/draft for anything long (`Saving…` → `Saved`). **Destructive actions get confirm *or* undo** — confirm with the safe option focused and the verb named ("Delete invoice forever"), or a live undo toast (Gmail's 5s undo-send). *GitHub type-to-confirm delete; Figma deep undo + version history.*
+
+**Wired states, not mocked states.** Gate 4's 8 states must be reached by *real code paths*, not just styled: the disabled button is actually unclickable, the loading state actually shows on submit, the error state actually renders the server message. Pair every state with a non-color signal (icon/opacity/text), never color alone.
+
+**Recognition over recall.** Progressive disclosure — essentials first, advanced behind "More"; multi-step only with a visible step indicator + back/forward + saved draft; one obvious primary action per screen (secondary de-emphasized, tertiary in a menu); inline help on focus, not a separate `?`.
+
+**Experience anti-patterns (the interaction slop catalog)** — the behavioural "AI made that", backing the experience audit. Each with the elite alternative:
+- **Blocking full-page spinner as the default load** *(critical)* → a skeleton matching the layout, or optimistic UI with a pending marker on the affected row only.
+- **Keyboard trap** *(critical)* → a modal traps focus *intentionally*, `Esc` closes, focus returns to the trigger; dropdowns/widgets always have a keyboard exit.
+- **Destructive action with no confirm and no undo** *(critical)* → confirm (safe option focused, verb named) or a live undo toast.
+- **Silent submit/click** *(critical)* → disable + spinner on the control, or an optimistic update; prevents the double-submit.
+- **Validation on every keystroke** → validate on blur/submit; real-time only as non-error progress.
+- **Dead-end empty/error state** → answer *what happened, why, what next* with a CTA; treat empty states as onboarding.
+- **Hover-only affordance** → `:focus`/`:active` match `:hover`; nothing important hidden behind hover on touch.
+- **`<div onClick>` / placeholder-as-label / `outline:none`** → semantic `<button>`/`<a>`; a real `<label>`; a visible focus replacement.
+- **Disabled button with no reason** → say why inline ("Complete all required fields"), or keep it enabled and validate on click.
+- **Motion ignoring `prefers-reduced-motion`** → gate animation/parallax behind the media query; nothing auto-plays unstoppably.
+- **Toast-only reporting of a critical error** → modal/persistent banner for critical; toast only for low-stakes background events.
+
+**AI-generated experience tells** (look fine, behave hollow): `onClick` handlers that do nothing · states styled in CSS but no path reaches them · `<div>`/`<span>` click targets with no `onKeyDown`/`role`/`tabindex` · missing `aria-label` on icon-only buttons · generic labels ("Submit"/"OK") · no loading flag in the submit handler · `console.error` instead of a user-facing error · placeholder used as the label.
+
+---
+
+## G. Microcopy by interaction type
+
+High-stakes text is the cheapest UX win and the model's most generic output. Be specific, human, and actionable — name the problem *and* the next step. This is a frame, not a phrasebook.
+
+| Interaction | Pattern | Example |
+|---|---|---|
+| Form-field error | name the field + the fix, inline | "Project name is required." |
+| API / submit / conflict error | what failed + recovery, persists until acted on | "That slug is taken — try another, or open the existing project." |
+| Loading (blocking) | name the work + progress, not a bare spinner | "Uploading report.pdf — 3s left" |
+| Loading (non-blocking) | transient, on the affected element | `Saving…` → `Saved` |
+| Empty state | reassure + value + a next action | "No items starred yet. Star anything to find it fast — browse the library." |
+| Confirm (destructive) | name the exact action + named buttons | "Delete this conversation?" · `Cancel` / `Delete` |
+| Success (transient) | confirm + offer undo where it applies | "Invite sent. Undo." |
+| Disabled control | say *why*, near the control | "Add a card to continue." |
+
+Voice matches the register: supportive (Slack, Mailchimp), professional (Stripe, Linear), terse (Raycast). **Never:** "Something went wrong" · "Invalid input" · "Error #5892" · "Submit" · "No data" · "Are you sure?".
+
+---
+
 ## Sources (condensed)
 Dribbble/Mobbin/SaaS-gallery context research, Figma Community + design-system docs (Material 3,
 Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/editorial trend writeups
@@ -161,3 +217,10 @@ products are approximate unless confirmed in that product's own design docs.
 AI app looks the same"), AI-chat anatomy guides (Setproduct, thefrontkit), Superhuman's command-palette
 notes, Fontfabric's 2026 typography trends + Vercel's Geist Pixel release, the bento-in-2026 critiques,
 and primary design docs (Linear design-refresh notes, Aesop, ProPublica typography, Material 3 / m3.material.io).
+
+§F/§G (interaction & experience, 2026-06-23) draw on NN/g's 10 usability heuristics + button-states research,
+the Doherty threshold / optimistic-UI + skeleton-vs-spinner writeups (LogRocket, Pencil&Paper), WCAG 2.2
+(2.1.2 no-keyboard-trap, 2.5.5 target size, prefers-reduced-motion), the "AI-generated UI is inaccessible by
+default" catalogue (Frontend Masters), and destructive-action / empty-state / form-validation-timing pattern
+guides (Smashing, Eleken, a11yblog). Exemplar interactions (Linear, Stripe, Raycast, Superhuman, Figma, Gmail)
+are illustrative; confirm specifics against each product.
