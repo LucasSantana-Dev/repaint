@@ -1,4 +1,6 @@
-# frontend
+# repaint
+
+> The anti-slop frontend skill — research, tokens, a reference library, and a live browser feedback loop.
 
 Build production-grade frontend UI that doesn't read as "AI-made" — a **self-contained** skill for agentic coding tools (Claude Code, and any agent that supports [`npx skills`](https://github.com/vercel-labs/skills)).
 
@@ -7,7 +9,7 @@ It depends on **no other skills and no agents**. Everything ships in this repo: 
 ## Install
 
 ```bash
-npx skills add LucasSantana-Dev/frontend-skill
+npx skills add LucasSantana-Dev/repaint
 ```
 
 That copies `SKILL.md` + `references/` + `evals/` into your agent's skills directory (`.claude/skills/` or `.agents/skills/`). Then just ask your agent to build, redesign, or "make X look less AI-made" — the skill auto-applies. Update later with `npx skills update`.
@@ -15,7 +17,7 @@ That copies `SKILL.md` + `references/` + `evals/` into your agent's skills direc
 Or clone manually:
 
 ```bash
-git clone https://github.com/LucasSantana-Dev/frontend-skill ~/.claude/skills/frontend
+git clone https://github.com/LucasSantana-Dev/repaint ~/.claude/skills/repaint
 ```
 
 ## What it does

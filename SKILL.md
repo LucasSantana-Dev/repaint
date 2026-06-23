@@ -1,12 +1,12 @@
 ---
-name: frontend
+name: repaint
 description: Build production-grade frontend UI that doesn't read as "AI-made". A self-contained pipeline — research real references, lock a register + a named anchor, commit a concrete token system (OKLCH color, distinctive type), build in your framework, then iterate against a slop-audit + live browser-screenshot feedback loop. Use for any page, component, dashboard, landing page, hero, pricing section, settings panel, data table, onboarding, or app surface — especially when output looks generic, templated, or "AI-made" and you want it to feel like Linear, Vercel, Stripe, Notion, or a real design studio. Ships a reference library (named anchors per context, 8 art-direction directions, 2026 token defaults, a slop catalog, type-by-role) and 9 evals.
 license: Apache-2.0
 metadata:
-  homepage: https://github.com/LucasSantana-Dev/frontend-skill
+  homepage: https://github.com/LucasSantana-Dev/repaint
 ---
 
-# frontend
+# repaint
 
 A self-contained pipeline for frontend UI that looks designed, not generated. It depends on **no other skills and no agents** — everything it needs ships in this folder. It stands on four pillars:
 
