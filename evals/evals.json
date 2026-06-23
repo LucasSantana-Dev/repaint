@@ -357,8 +357,8 @@
     },
     {
       "id": 24,
-      "prompt": "I want a landing hero for my new developer-focused API product, but I'm not sure on the visual direction yet — show me some options before you build it.",
-      "expected_output": "A design-then-code response. Should: name 2-3 distinct candidate anchor/variant directions (e.g. Linear-calm vs Stripe-editorial vs a warmer direction) each with a one-line trade-off, commit to ONE, write the locked register/anchor/token table to a DESIGN.md as the approval checkpoint, THEN build the chosen direction — not jump straight to a single generic hero.",
+      "prompt": "I want a landing hero for my new developer-focused API product, but I'm not sure on the visual direction yet — show me 2-3 distinct options with quick trade-offs, then go ahead and build your strongest pick.",
+      "expected_output": "A design-then-code response that presents options AND delivers. Should: name 2-3 distinct candidate anchor/variant directions each with a one-line trade-off, pick the strongest, write the locked register/anchor/token table to a DESIGN.md, AND build that chosen hero in the same pass — not stop after presenting options, and not jump straight to a single generic hero.",
       "files": [],
       "assertions": [
         "Presents 2-3 distinct, named candidate directions or anchors before committing, not a single take",
