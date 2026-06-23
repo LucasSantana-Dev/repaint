@@ -81,6 +81,46 @@ Fold three distilled builder-tool mechanisms (design-spec lock + variants, regis
 
 **Replanning triggers:** token-lock can't survive separate invocations in-context only → persist via emitted `DESIGN.md` (already the chosen mechanism).
 
+### Phase 4: Absorb #1 — deepen §B directions  *(highest leverage; see absorptions design doc)*
+**Objective:** Make the 8 art-direction directions *operationally* concrete, not just named.
+
+**Steps:**
+1. `references/context-anchors.md` §B: for each of the 8 directions, add concrete execution specs — display type scale (e.g. `clamp(...)`), tracking, leading, named typefaces, color triplets (light + dark), and the one signature move/texture. Brutalist is the worked exemplar (scale `clamp(4rem,10vw,15rem)`, `-0.03em`, `#E61919`, zero-radius/gradient/soft-shadow, scanlines).
+2. Add the **Chanel principle** as one line in the SKILL.md slop audit ("can one decorative element be removed without losing intent?").
+3. Re-run evals; compare to baseline. This is resource content (low plateau risk).
+
+**Done When:** each §B direction carries scale + tracking + type + color-triplet + signature; art-direction evals (#2, #24) hold or improve; aggregate within gate.
+**Time:** 4–6h
+
+**Replanning triggers:** §B growth pushes a reference file past the harness's 64KB/file inject limit → split §B into its own reference file.
+
+### Phase 5: Absorb #2 — new §L Motion Craft
+**Objective:** Add the motion *craft* layer repaint lacks (it has tokens only).
+
+**Steps:**
+1. `references/context-anchors.md`: new **§L Motion Craft** — scroll choreography, timeline orchestration, stagger recipes, performance guardrails (transform/opacity only; will-change discipline), motion-slop anti-patterns.
+2. Light pointer from Gate 5 / art-direction mode to §L (NOT a heavy new gate — plateau risk).
+3. Optional: 1 eval asserting motion-slop avoidance (animate transform not layout props; reduced-motion fully disables). Re-baseline if added.
+4. Re-run evals; compare to baseline.
+
+**Done When:** §L exists with the five pattern groups; Gate 5/art-direction references it; eval (if added) passes; aggregate within gate.
+**Time:** 4–6h
+
+**Replanning triggers:** adding §L as enforcing rules (not resource) drops the score beyond the noise band → demote to reference-only, remove the gate.
+
+### Phase 6 (deferred): Absorbs #3 + #4
+**Objective:** Lower-ROI absorbs, only if Phases 4–5 land cleanly.
+
+**Steps:**
+1. §B: name Cyber/Technical + Cinematic Pacing as directions (or map into existing slots).
+2. §I fragment: Material-3 tonal-palette generation + two-part elevation + shadcn `.dark` CSS-variable override (builder-facing).
+3. Re-run evals.
+
+**Done When:** directions named; §I fragment linked; aggregate within gate.
+**Time:** 0.5–1 day
+
+**Replanning triggers:** no eval moves on these → ship as docs-only, skip dedicated evals.
+
 ## Dependencies & Assumptions
 - Phases are ordered by leverage but each is independently shippable; Phase 0 must precede all (provides the gate).
 - Eval runs require a live OpenRouter key (`~/.repaint-openrouter.key`) — assumed present; a bad key fails auth for free.
