@@ -91,14 +91,60 @@ that *specific* context read as AI-made.
 When the brief is creative/open ("surprise me", "bold", brand-expression), pick ONE of these named
 directions instead of inventing a vibe. Each carries real typefaces + a color stance.
 
-1. **Warm editorial serif** — refined, cinematic. *Editorial New, Tiempos, GT Sectra, Lyon.* Warm grays + terracotta/ochre. Use: luxury, heritage, long-form.
-2. **Swiss / neo-grotesque** — rational, grid-native, trustworthy. *Neue Montreal, GT America, Söhne.* Off-white/charcoal + one restrained accent. Use: systematic tech, modern corporate.
-3. **Soft-organic / biophilic** — calm, wellness, grounded. *Neue Gstaad, Palma* + humanist body. Mushroom/clay/moss, softened blues. Use: health, eco, meditative.
-4. **Brutalist / neo-brutalist** — raw, confrontational, honest. *Monument Extended* + a mono. Bold primaries, solid (un-blurred) 4px drop shadows, visible grid seams. Use: provocative indie/tech.
-5. **Typographic maximalism / kinetic** — type as hero. *Neue York, GT Flexa* (variable). Saturated, layered color within type. Use: music, entertainment, expressive campaigns.
-6. **Retro-futurist / material 3D** — tactile, exuberant, Y2K-revived. Bold display + tactile glass/metal (with real texture, not CGI sheen). Saturated. Use: consumer delight, gaming.
-7. **Imperfect-by-design** — anti-sterile, crafted, human. Hand-drawn display + mono body; grain/riso texture. Warm wheat/caramel/sage. Use: indie/DTC, editorial identity.
-8. **Deconstructed / specimen** — intellectual, curatorial, "pinned specimen". Experimental lettersets, numbered cut-outs, B&W + one accent. Use: gallery, academic, catalogues.
+Each direction below ships **execution specs**, not just a name — type scale, tracking, leading, a color triplet, and the one signature move — so it is concrete enough to build without further clarification. (A direction named without these is "nominally specific but operationally vague" — the gap that makes art-direction output read generic.)
+
+1. **Warm editorial serif** — refined, cinematic.
+   - *Type:* Editorial New / Tiempos / GT Sectra / Lyon, display; a quiet humanist sans or the same serif for body.
+   - *Scale:* display `clamp(2.5rem, 6vw, 5.5rem)` · tracking `-0.02em` · leading `1.05`; body leading `1.6`.
+   - *Color:* bg `#F7F3EC` · fg `#1A1714` · accent terracotta `#C26A4A` (ochre `#C9912F` alt).
+   - *Signature:* oversized drop-cap or full-bleed editorial photography with luxurious margins.
+   - *Use:* luxury, heritage, long-form.
+2. **Swiss / neo-grotesque** — rational, grid-native, trustworthy.
+   - *Type:* Neue Montreal / GT America / Söhne.
+   - *Scale:* display `clamp(2rem, 4.5vw, 4rem)` · tracking `-0.01em` · leading `1.1`; strict 12-col grid.
+   - *Color:* bg `#FAFAF8` · fg `#0A0A0A` · one restrained accent (klein `#0047FF` or signal red `#E5322D`).
+   - *Signature:* visible baseline grid + hairline rules; asymmetric Müller-Brockmann layout.
+   - *Use:* systematic tech, modern corporate.
+3. **Soft-organic / biophilic** — calm, wellness, grounded.
+   - *Type:* Neue Gstaad / Palma display + a humanist body (Aktiv Grotesk, Mier).
+   - *Scale:* display `clamp(2.25rem, 5vw, 4.5rem)` · tracking `-0.01em` · leading `1.15`; large radii `16–28px`.
+   - *Color:* bg mushroom `#EDE7DC` · fg clay `#3D3528` · accent moss `#6B7A55` (softened blue `#7E96A8` secondary).
+   - *Signature:* organic blob shapes, soft `24px` radii, generous whitespace — no hard edges.
+   - *Use:* health, eco, meditative.
+4. **Brutalist / neo-brutalist** — raw, confrontational, honest.
+   - *Type:* Monument Extended / Neue Haas Grotesk display + a mono (JetBrains Mono, VT323) for data.
+   - *Scale:* display `clamp(4rem, 10vw, 15rem)` · tracking `-0.03em…-0.06em` · leading `0.85–0.95`; mono `10–14px` tracking `0.05–0.1em`.
+   - *Color:* light bg `#F4F4F0` / fg `#050505` / accent `#E61919`; dark bg `#0A0A0A` / fg `#EAEAEA` / accent `#E61919`.
+   - *Signature:* **zero radius, zero gradient, zero soft shadow** — 1–2px solid borders only; `[ LABEL ]` ASCII framing, CRT scanlines / halftone, `REV 2.6`-style strings.
+   - *Use:* provocative indie/tech.
+5. **Typographic maximalism / kinetic** — type as hero.
+   - *Type:* Neue York / GT Flexa (variable-weight).
+   - *Scale:* display `clamp(3rem, 12vw, 12rem)` · tracking `-0.04em` · leading `0.9`; animate the variable weight axis.
+   - *Color:* base `#0D0D0D` + saturated accents trapped inside glyphs (`#FF3D2E`, `#3D5AFE`, `#FFE600`).
+   - *Signature:* type overlaps and bleeds off-canvas; weight shifts on scroll; color lives *inside* the letters.
+   - *Use:* music, entertainment, expressive campaigns.
+6. **Retro-futurist / material 3D** — tactile, exuberant, Y2K-revived.
+   - *Type:* bold display (Clash Display, Monument) + tactile glass/metal surfaces with *real* texture.
+   - *Scale:* display `clamp(2.5rem, 7vw, 6rem)` · tracking `-0.02em`.
+   - *Color:* deep base `#10131A` + chrome/iridescent accents (`#A8B5FF`, `#FF9CEE`) — grain, not CGI sheen.
+   - *Signature:* beveled glass/chrome surfaces; inner-glow built from noise, not blur.
+   - *Use:* consumer delight, gaming.
+7. **Imperfect-by-design** — anti-sterile, crafted, human.
+   - *Type:* hand-drawn / display with character + mono body; grain/riso texture.
+   - *Scale:* display `clamp(2.5rem, 6vw, 5rem)` · slightly irregular tracking · leading `1.2`.
+   - *Color:* bg wheat `#E9DCC4` · fg espresso `#2A211A` · accent caramel `#B5793D` (sage `#8A9678` secondary).
+   - *Signature:* riso/grain overlay, slight element rotation, visible registration offset — deliberate imperfection.
+   - *Use:* indie/DTC, editorial identity.
+8. **Deconstructed / specimen** — intellectual, curatorial, "pinned specimen".
+   - *Type:* experimental lettersets; oversized specimen numerals beside fine captions.
+   - *Scale:* mixed — numerals `clamp(4rem, 9vw, 11rem)` against `12px` captions; tracking varies by role.
+   - *Color:* B&W `#0A0A0A` / `#FFFFFF` + one accent `#FF4D00`.
+   - *Signature:* pinned-specimen layout, numbered annotations, hairline crop marks, asymmetric negative space.
+   - *Use:* gallery, academic, catalogues.
+
+Two more named directions (from premium-frontend references), use the same spec discipline:
+- **Cyber / technical** — dark substrate + neon accents + monospace; staggered terminal-style reveals. bg `#080A0F` / fg `#D6E1E8` / accent `#39FF88` or `#00E0FF`; mono display, `[STATUS]` framing, grid telemetry. Use: dev-tools with attitude, security, web3.
+- **Cinematic pacing** — full-viewport imagery, slow cross-fades, scroll-as-narrative, heavy negative space. Restrained palette, one or two huge type moments. Motion is the medium — pair with §L. Use: product films, premium launches, brand stories.
 
 Foundries to draw from (named, current): **Pangram Pangram, Grilli Type, Klim, Commercial Type, ABC Dinamo.** Free routes: Bricolage Grotesque, Fraunces, Spectral, Cormorant, Geist, IBM Plex, JetBrains Mono.
 
@@ -354,6 +400,35 @@ The output must *run on the first try*, not merely look right — the discipline
 2. Grep the diff for the forbidden patterns above.
 3. Self-contained: the entry component default-exports and renders with zero props.
 4. *Then* run the dev server / browser-verify — the lint kills the import/compile class cheaply; the browser is for runtime + visual.
+
+---
+
+## L. Motion craft (orchestration, beyond the §C duration/ease tokens)
+
+§C gives *atomic* motion (one element's duration + ease). This is the *craft* layer — orchestrated, scroll-aware, performant — for art-direction and any motion-heavy brief. Tokens are the foundation; this is what separates "nice transitions" from production choreography. (Pointer: Gate 5 motion-safety + art-direction mode.)
+
+**Scroll-driven choreography**
+- Bind animation progress to scroll only with intent: `scrub` ties scroll% → animation%; *pin* to extend a section's range; trigger relative to the viewport (start when the element is ~80% up).
+- Batch entrance: stagger multiple elements *as a group* when they enter the viewport, not each on its own trigger.
+- Discrete (play once on enter) vs continuous (scrub with a little lag-smoothing). **Never scroll-jack** — don't fight the user's scroll momentum.
+
+**Timeline orchestration**
+- Sequence with **named labels and relative positions** (`"intro"`, `"intro+=0.2"`, `"<"` = with previous, `">"` = after) — not magic-number delays.
+- Nest timelines for reuse; let duration/ease defaults inherit downward. Prefer one timeline over many chained `.delay()`s.
+
+**Stagger recipes**
+- 50–120ms between items for 3–6 elements; **>200ms reads scattered**. Combine with an ease for a cascade; reverse the order for a last-to-first feel.
+
+**Performance guardrails**
+- Animate **`transform` + `opacity` only** (`x`/`y`/`scale`/`rotate`). **Never animate** `width`/`height`/`top`/`left`/`margin`/`padding` — that thrashes layout.
+- `will-change: transform` only *while* animating; remove it after. High-frequency followers (cursor): batch with a `quickTo`-style setter, not per-frame React state.
+
+**Motion-slop tells (instant fix)**
+- **Oversaturation** — >3 simultaneous motion types on one element (scale + rotate + skew + …).
+- **Timing misalignment** — a stagger that doesn't divide evenly into the duration (reads jittery).
+- **Layout thrashing** — animating `width` instead of `scaleX`.
+- **Weak reduced-motion** — `prefers-reduced-motion` must *disable* the motion (or swap to a fade), not merely "reduce" it.
+- **Decorative scroll rails / progress bars** that clash with the register or overflow heading text.
 
 ---
 
