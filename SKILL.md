@@ -15,7 +15,7 @@ A self-contained pipeline for frontend UI that looks designed, not generated —
 3. **References** — a curated library ([references/context-anchors.md](references/context-anchors.md)) of named anchors per context, art-direction directions, 2026 token defaults, a slop catalog, type-by-role, experience patterns, microcopy, and an accessibility & SEO checklist.
 4. **Experience** — the *interaction* is designed, not just the pixels: honest feedback and perceived performance, forgiving input, recoverable actions, and a real keyboard path. Looks pass the eye; experience passes the hand. Gate 4, Gate 5, and the experience audit enforce it.
 5. **Reach** — the work is **accessible to every user** (assistive tech) and **findable by search**. One semantic-HTML foundation — landmark regions, one H1 + a logical heading order, real labels, meaningful alt — serves screen readers *and* crawlers. Gate 6 and the accessibility & SEO audit enforce it (SEO is register-gated to public surfaces).
-6. **Real iteration feedback** — build → render → screenshot → slop-audit + experience-audit + a11y/SEO audit → iterate, against live browser output, not a one-shot guess. The 21 [evals](evals/evals.json) are the regression harness.
+6. **Real iteration feedback** — build → render → screenshot → slop-audit + experience-audit + a11y/SEO audit → iterate, against live browser output, not a one-shot guess. The 23 [evals](evals/evals.json) are the regression harness.
 
 ## Where this skill earns its keep
 
