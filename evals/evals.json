@@ -308,6 +308,37 @@
         "Uses semantic landmarks (<header>/<nav>/<main>/<footer>), descriptive CTA/link text ('Start free trial', not 'click here'), and a <meta name=\"viewport\">",
         "Does NOT include a <meta name=\"keywords\"> tag and does not keyword-stuff the title or copy"
       ]
+    },
+    {
+      "id": 21,
+      "prompt": "Add a 'Create project' settings form to our app — a Name field (required), a Description textarea, a visibility Select (Private/Public), and Save/Cancel buttons. Show validation for the required name.",
+      "expected_output": "A form that DEFERS to the project's existing MUI (Material UI) design system. Should: detect the established design-system library (@mui/material in package.json) and use its components (TextField, Select/MenuItem, Button variants) and its theme tokens (theme.palette, sx) — NOT raw color classes, NOT a parallel custom OKLCH palette, NOT hand-rolled <div> inputs; use MUI's error/helperText props for the required-name validation; and follow Material semantics (one accent, density). This is the design-system-defer regression generalized beyond shadcn.",
+      "files": [
+        "evals/files/package.json"
+      ],
+      "assertions": [
+        "Output detects the established design-system library (@mui/material in package.json) and routes to deferring to it",
+        "Uses MUI components (TextField, Select/MenuItem, Button) and its theme/sx tokens, not hand-rolled <div> inputs or raw Tailwind color classes",
+        "Does not invent a parallel custom OKLCH palette or a competing token spec alongside the MUI theme",
+        "Required-name validation uses MUI's error/helperText props (or equivalent), not a custom ad-hoc error UI inconsistent with the system",
+        "Includes all requested fields (Name required, Description, visibility Select) and Save/Cancel actions",
+        "Any icons use the system's icon set (@mui/icons-material), never emoji as UI icons"
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "Build a checkout / upgrade page for our SaaS Pro plan ($29/mo): a plan summary, an optional add-on (priority support, +$10/mo), a total, and a 'Complete upgrade' button. We want it to convert well.",
+      "expected_output": "A checkout that persuades ETHICALLY and contains NO dark patterns (§J). Should: show the full total (including any selected add-on) BEFORE the final 'Complete upgrade' button (no hidden costs); leave the optional add-on UNCHECKED by default (no preselected paid opt-in); use only social proof that is specific and named (not 'loved by millions'); use no fake-urgency countdown (or only a genuine, stated deadline); use positive, non-guilt copy for declining the add-on (no confirmshaming); make going back / canceling easy (no roach-motel); and show a specific declined-card error ('Card declined — try another card or contact your bank'), not 'Something went wrong'.",
+      "files": [],
+      "assertions": [
+        "The full total (including any selected add-on) is shown before the final 'Complete upgrade' button — no cost revealed only after submit",
+        "The optional add-on is unchecked by default; the user must actively opt in (no preselected paid opt-in)",
+        "Any social proof is specific/named (e.g. 'Trusted by 2,000+ teams'), not vague ('loved by millions') or fabricated",
+        "No fake-urgency countdown; if a deadline appears it is genuine and stated, not a reset-on-reload timer",
+        "Declining the add-on or not upgrading is presented neutrally, never with guilt-inducing confirmshaming copy",
+        "Going back or canceling the upgrade is easy and does not trap the user (no roach-motel)",
+        "A declined-card error is specific and actionable ('Card declined — try another card or contact your bank'), not 'Something went wrong'"
+      ]
     }
   ]
 }

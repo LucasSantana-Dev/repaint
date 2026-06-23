@@ -247,6 +247,81 @@ Targets (2026): **LCP ≤2.0s · INP ≤200ms · CLS <0.1**, on real-user data (
 
 ---
 
+## I. Design systems & the patterns big companies define
+
+Gate 2 anchors to a named *product*; this is the named *systems* layer — the industry-standard design systems to anchor to (or adopt) per context, and the cross-cutting patterns they've standardized. **Anchor to the system that fits the register, not reflexively to a dev-tool one.**
+
+### The systems — anchor to the one that fits the context
+| System | Company | Anchor it for | Signature it defined |
+|---|---|---|---|
+| Material 3 | Google | consumer, Android, multi-platform | dynamic color, density modes, color-role semantics |
+| Human Interface Guidelines | Apple | iOS / macOS / visionOS native apps | clarity · deference · depth; platform-native controls, SF Symbols |
+| Carbon | IBM | enterprise, data-dense B2B, compliance | role-based semantic color, grid-native, multi-theme |
+| Polaris | Shopify | commerce admin, merchant tooling | merchant-first language, framework-agnostic web components |
+| Fluent 2 | Microsoft | MS ecosystem, enterprise cross-platform | two-part elevation, semantic alias tokens, density |
+| Ant Design | Ant Group | high-density B2B data tables (React) | 12-col grid, dark-first, deep component APIs |
+| Lightning (SLDS 2) | Salesforce | Salesforce / enterprise multi-tenant | AI-ready tokens, framework-agnostic CSS |
+| Spectrum | Adobe | design tooling, premium-polish apps | expressive motion, accessible-contrast tokens |
+| Primer | GitHub | developer tools, code platforms | mono-friendly, Octicons, table/code-display |
+| Atlassian | Atlassian | team-collaboration / workflow software | token elevation, productivity density |
+| Base Web | Uber | large multi-brand systems | Overrides API (customise without forking) |
+| Radix | — | a headless foundation for a custom system | unstyled primitives + ARIA / keyboard built in |
+| shadcn/ui | Vercel ecosystem | Next.js + Tailwind, copy-paste source | Radix + Tailwind + semantic tokens in your repo |
+| Mantine | — | batteries-included React | 120+ components/hooks, WCAG color system |
+
+### Anchor vs. adopt vs. build (extends Phase 2)
+- **Adopt wholesale** when the project already uses an established library (MUI/Material, Ant, Polaris, Mantine, Carbon-React, Fluent-React, shadcn/Radix): use its tokens, primitives, theming — **never a parallel palette** (the #1 Gate-3 → production drift).
+- **Anchor to** when you're *not* using that library: adopt its visual language, token naming, and pattern grammar as the bar (e.g. "anchored to Material 3 semantics"), implemented in your stack. The most common case.
+- **Build custom** only for art-direction or a true one-off — then use the §C 2026 defaults and still follow the token discipline below.
+
+### Cross-cutting patterns the industry standardized (apply where they fit)
+- **Multi-tier tokens** — primitive (raw `blue-600`) → semantic (`color-primary`) → component (`button-bg`). One semantic change ripples everywhere; this is what makes theming work.
+- **Tokens-as-code** — W3C **DTCG** JSON (stable since Oct 2025), version-controlled, transformed to CSS vars / Tailwind / Figma (Style Dictionary, Tokens Studio). ~74% of mature systems ship tokens as the primary deliverable.
+- **4 / 8px grid** + a 4px sub-grid for internal spacing (no stray 2/6px offsets).
+- **Command palette** — `Cmd+K`, fuzzy, context-aware (see §A command-palette row).
+- **Density modes** — compact (data, mouse) · normal · cozy (touch, 48px targets); responsive.
+- **Dark mode first-class** — its own elevation (surfaces +5–8% luminance) and semantic overrides, not a `dark:` afterthought.
+- **Motion tokens** — duration (120/200/320ms) + named easing; prevents animation overload.
+- **Two-part elevation** — sharp key shadow + soft ambient (replaces the banned `0 4px 6px rgba(0,0,0,.1)`).
+- **`:focus-visible`** baseline (Gate 3 numbers) · **container queries** — components respond to their container, not just the viewport (baseline 2026).
+
+---
+
+## J. Psychology of interface design (ethical) + dark-pattern bans
+
+The cognitive science under elite products — *why* the patterns in §F/§G work. Use it to design honestly. The **dark-pattern bans** below are where psychology gets turned *against* the user: instant rewrite, same severity as a critical slop/experience finding. (§F already owns the Doherty threshold, recognition-over-recall, and progressive disclosure — not repeated here.)
+
+### Principles → the design implication
+- **Gestalt — proximity / similarity / common region / closure / continuity.** Grouping is read from space, shared style, and shared boundaries: related fields ~24px apart, sections 80px+; same-type controls share one look; a card/fieldset groups better than spacing alone.
+- **Hick's law.** Decision time grows with options → show essentials, hide advanced behind "More"; ≤7 top-level nav items.
+- **Fitts's law.** Targets are faster when bigger/closer → primary CTA ≥48px, touch ≥44px; separate Delete from Save; primary actions in the thumb zone on mobile.
+- **Miller's law / chunking.** Working memory ~7±2 → chunk a 12-field form into three labeled groups; group dashboard metrics by category.
+- **Jakob's law.** Users expect your app to work like the ones they already know → follow category conventions (left-sidebar nav, familiar settings); deviate only when it adds clarity.
+- **Tesler's law.** Complexity is conserved → absorb it into the system (smart defaults, auto-calculation), don't push it onto the user.
+- **Aesthetic-usability effect.** Polish buys leniency for minor friction — but never substitutes for honest interaction (Gate 5 still applies).
+- **Von Restorff (isolation).** The distinct item is remembered → exactly one emphasized primary action; don't paint everything the accent color.
+- **Serial position (primacy / recency).** First and last are remembered → most-important nav/list items first, next-most last.
+- **Peak-end rule.** An experience is judged by its peak and its end → design one delightful moment and a clean, reassuring finish (a confirmed success, not a trail-off).
+- **Zeigarnik + goal-gradient.** Unfinished tasks nag and nearness motivates → show "Step 3 of 5" and progress toward completion; never silently abandon an incomplete state.
+- **Cognitive load (intrinsic vs. extraneous).** Keep the inherent task as-is; strip the *extraneous* — clutter, jargon, needless steps.
+- **Fogg behavior model — B = Motivation × Ability × Prompt.** Put the prompt at the moment of intent, lower the effort, make the value real.
+- **Ethical persuasion (Cialdini, applied honestly).** Social proof (*named*, specific — "Trusted by 2,000+ teams", not "loved by millions"); authority (cite the real source/cert); scarcity (only when genuine); loss-aversion & framing (honest, gain-framed); anchoring (with a defensible reference). The signal must be **real**.
+
+### Dark patterns — banned (psychology used against the user)
+| Pattern | Tell | Do instead |
+|---|---|---|
+| Confirmshaming | a guilt-y decline ("No thanks, I hate saving money") | neutral options ("Not now") |
+| Forced continuity | silent auto-charge after a trial | explicit opt-in + a reminder before the charge |
+| Roach motel | one-click signup, buried cancel | exit as easy as entry |
+| Fake urgency | a countdown that resets on reload | only real, stated deadlines |
+| Hidden costs | fees revealed only at the last step | show the full total upfront |
+| Disguised ads | sponsored content styled as organic | label it "Sponsored" |
+| Preselected opt-ins | pre-ticked add-ons / marketing | default unchecked; the user opts in |
+| Misdirection / nagging | the user's goal hidden; dismissals ignored | make the intended action prominent; honor "not now" |
+| Trick questions | double-negatives that confuse consent | plain, direct language |
+
+---
+
 ## Sources (condensed)
 Dribbble/Mobbin/SaaS-gallery context research, Figma Community + design-system docs (Material 3,
 Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/editorial trend writeups
@@ -271,3 +346,12 @@ are illustrative; confirm specifics against each product.
 status messages), MDN ARIA live-regions, the semantic-HTML-for-accessible-SEO writeups, Google Search Central
 (Core Web Vitals — LCP ≤2.0s as of 2026, mobile-first indexing), schema.org / Rich Results, and the
 meta-keywords-are-dead + canonical-best-practice guides. SEO is register-gated to public surfaces.
+
+§I (design systems, 2026-06-23) draws on the primary docs of each system (m3.material.io, Apple HIG,
+carbondesignsystem.com, Shopify Polaris, fluent2.microsoft.design, Ant Design, Salesforce SLDS 2, Adobe
+Spectrum, GitHub Primer, Atlassian, Uber Base Web, Radix, shadcn/ui, Mantine) and the W3C Design Tokens
+Community Group (DTCG first stable spec, Oct 2025) plus the multi-tier-token / density / container-query
+writeups. §J (psychology, 2026-06-23) draws on the Laws of UX / IxDF / NN/g treatments of Gestalt, Hick,
+Fitts, Miller, Jakob, Tesler, Von Restorff, serial-position, peak-end, Zeigarnik, goal-gradient and the
+Fogg model, Cialdini's principles applied ethically, and the FTC/GDPR-flagged dark-pattern taxonomy
+(careerfoundry, usercentrics, arXiv). Persuasion is included only in its honest form; manipulation is banned.
