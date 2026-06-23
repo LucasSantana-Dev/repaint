@@ -1,5 +1,5 @@
 {
-  "_doc": "Regression baseline for the repaint evals. Gate on the DELTA vs this baseline, not the absolute number. See evals/README.md for the six gate rules. This is a sibling artifact to evals.json (the canonical assertions-as-strings eval set) — never merge it into evals.json.",
+  "_doc": "Regression baseline for the repaint evals. Gate on the DELTA vs this, not the absolute. See evals/README.md for the six gate rules. Sibling to evals.json \u2014 never merge in.",
   "harness": "agent-skills-eval@0.1.1",
   "target_model": "z-ai/glm-4.6",
   "judge_model": "openai/gpt-4.1-mini",
@@ -7,35 +7,120 @@
   "date": "2026-06-23",
   "runs": 3,
   "mode": "with_skill",
-  "aggregate_pass_rate_mean": 0.884,
-  "per_run_pass_rate": [0.8658, 0.8792, 0.906],
-  "noise_band_pp": 4.0,
-  "stdev_pp": 1.67,
-  "method": "Assertion-level pass-rate (passed assertions / total assertions) per run, averaged across 3 runs. Per-eval entries are the median passed-count across the 3 runs.",
-  "tool_stall_note": "A lone 0/N on an inspect/fixture eval (observed: eval-4 = 0/6 in one of three runs) is a single-shot / tool-less harness artifact, NOT a skill regression. Judge per-eval health by majority across runs, never a single run.",
+  "eval_count": 25,
+  "aggregate_pass_rate_mean": 0.8992,
+  "per_run_pass_rate": [
+    0.9136,
+    0.9074,
+    0.8765
+  ],
+  "noise_band_pp": 3.7,
+  "method": "Assertion-level pass-rate per run, averaged over 3 runs. Per-eval = median passed across the 3 runs.",
+  "supersedes": "The 23-eval baseline (mean 0.884) from runs 1-3. After the builder-tool distillation (Gate 7 + variants + token-lock) the overlapping evals 0-22 ROSE to 0.915 (+3.1pp) \u2014 net improvement, no regression.",
+  "tool_stall_note": "A lone 0/N on an inspect/fixture eval is a single-shot/tool-less harness artifact, not a regression. Judge per-eval health by majority across runs.",
+  "known_weak": {
+    "24": "Variants/design-then-code eval scores ~3/6 median. The model PASSES 'presents 2-3 variants' + 'each has a trade-off' (the addition works) but FAILS 'commits to ONE and builds' + 'writes DESIGN.md' \u2014 it presents options and stops, as if awaiting selection. This is a single-shot harness/eval mismatch (the eval demands present-AND-build, contradicting the design's await-selection / autonomous-default-to-first). FIX (deferred): reword eval-24 to test the autonomous default-and-build path, + bump prominence of SKILL.md's 'default to the first and log the choice' clause."
+  },
   "per_eval_median": {
-    "0":  { "passed": 4, "total": 8 },
-    "1":  { "passed": 5, "total": 6 },
-    "2":  { "passed": 5, "total": 6 },
-    "3":  { "passed": 6, "total": 7 },
-    "4":  { "passed": 6, "total": 6 },
-    "5":  { "passed": 6, "total": 6 },
-    "6":  { "passed": 6, "total": 6 },
-    "7":  { "passed": 6, "total": 7 },
-    "8":  { "passed": 6, "total": 6 },
-    "9":  { "passed": 7, "total": 7 },
-    "10": { "passed": 6, "total": 7 },
-    "11": { "passed": 6, "total": 6 },
-    "12": { "passed": 4, "total": 4 },
-    "13": { "passed": 8, "total": 8 },
-    "14": { "passed": 5, "total": 6 },
-    "15": { "passed": 6, "total": 6 },
-    "16": { "passed": 5, "total": 6 },
-    "17": { "passed": 5, "total": 6 },
-    "18": { "passed": 5, "total": 6 },
-    "19": { "passed": 8, "total": 8 },
-    "20": { "passed": 8, "total": 8 },
-    "21": { "passed": 6, "total": 6 },
-    "22": { "passed": 4, "total": 7 }
+    "0": {
+      "passed": 8,
+      "total": 8
+    },
+    "1": {
+      "passed": 6,
+      "total": 6
+    },
+    "2": {
+      "passed": 6,
+      "total": 6
+    },
+    "3": {
+      "passed": 7,
+      "total": 7
+    },
+    "4": {
+      "passed": 6,
+      "total": 6
+    },
+    "5": {
+      "passed": 6,
+      "total": 6
+    },
+    "6": {
+      "passed": 6,
+      "total": 6
+    },
+    "7": {
+      "passed": 7,
+      "total": 7
+    },
+    "8": {
+      "passed": 6,
+      "total": 6
+    },
+    "9": {
+      "passed": 7,
+      "total": 7
+    },
+    "10": {
+      "passed": 7,
+      "total": 7
+    },
+    "11": {
+      "passed": 5,
+      "total": 6
+    },
+    "12": {
+      "passed": 4,
+      "total": 4
+    },
+    "13": {
+      "passed": 8,
+      "total": 8
+    },
+    "14": {
+      "passed": 6,
+      "total": 6
+    },
+    "15": {
+      "passed": 6,
+      "total": 6
+    },
+    "16": {
+      "passed": 6,
+      "total": 6
+    },
+    "17": {
+      "passed": 5,
+      "total": 6
+    },
+    "18": {
+      "passed": 5,
+      "total": 6
+    },
+    "19": {
+      "passed": 8,
+      "total": 8
+    },
+    "20": {
+      "passed": 8,
+      "total": 8
+    },
+    "21": {
+      "passed": 6,
+      "total": 6
+    },
+    "22": {
+      "passed": 5,
+      "total": 7
+    },
+    "23": {
+      "passed": 7,
+      "total": 7
+    },
+    "24": {
+      "passed": 3,
+      "total": 6
+    }
   }
 }
