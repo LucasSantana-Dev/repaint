@@ -63,7 +63,7 @@ that *specific* context read as AI-made.
 ### Auth (sign-up/login) + error/404 — register `product-app` (utility) / `utility`
 - **Anchors:** Vercel (high-contrast minimal), Stripe (explicit errors), Clerk (passkey/social-first).
 - **Tokens:** purposeful heading ("Sign in to continue to Acme", not "Login"); 24px between fields, 32px between sections; full-width CTA on mobile, 48px targets; single semantic accent.
-- **Must-haves:** email-first; password visibility toggle; inline (not modal) errors with *specific* text ("Incorrect email or password"); social/passkey ordered by audience (consumer→social first, B2B→email/SSO first); on 404: branded illustration + clear "Go home" + search/related links.
+- **Must-haves:** email-first; password visibility toggle; inline (not modal) errors with *specific* text ("Incorrect email or password"); social/passkey ordered by audience **in DOM order** (consumer → social buttons first; **B2B → the email/SSO block first**, social below the divider); on 404: branded illustration + clear "Go home" + search/related links.
 - **Tells:** "Something went wrong" / generic errors; placeholder-as-label; stock illustration on the 404; tiny targets; oversized desktop fields.
 
 ### Marketing event / product-launch — register `saas-landing` / `marketing`

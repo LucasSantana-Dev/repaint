@@ -57,7 +57,7 @@ Extract: recommended palette, typography pairing, layout pattern, and the anti-p
 - `personal-portfolio` — identity-first, single person
 - `saas-landing` — product marketing, convert visitors
 - `product-app` — post-login app surface
-- `marketing` — blog, launch page, campaign
+- `marketing` — blog, launch page, campaign (narrative/editorial — never a feature-card grid)
 - `docs` — API reference, developer docs, KB
 
 If the brief matches 2+ registers, ask one disambiguation question first. **Default-DENY:** SaaS-landing patterns (bento grid, dual-CTA hero, feature-row rhythm) must NOT apply to other registers without affirmative intent. In particular **marketing ≠ saas-landing**: a launch/announcement page gets a narrative/editorial layout + an editorial anchor (Stripe-marketing, Medium, The Verge, Linear changelog), never a feature-card grid (and NOT a .map() loop over identical feature cards: fold highlights into the narrative prose, or give each a distinct, varied treatment — alternating sides, different sizes) or product-UX anchor.
@@ -95,7 +95,9 @@ When the project has no tokens, use the **2026 token defaults** in [context-anch
 - **Semantic structure** — landmark regions (`<header>`/`<nav>`/`<main>`/`<footer>`), real elements over `<div>` soup; **native HTML before ARIA** (ARIA only to fill a gap native HTML can't).
 - **Exactly one `<h1>`** stating the page's purpose, then a logical heading order (no level skips).
 - **Labels & alt** — every input has a real, associated `<label>` (never placeholder-as-label); content images carry descriptive `alt`, decorative images `alt=""`.
-- **Name/role/value** for any custom widget (`role` + `aria-*` state); **accessible errors** (`aria-invalid` + `aria-describedby`); **`aria-live`** for async/optimistic updates; **`lang`** on `<html>`; a **skip-to-main** link on nav-heavy pages.
+- **Name/role/value** for any custom widget (`role` + `aria-*` state); **accessible errors** (`aria-invalid` + `aria-describedby`).
+- **Live regions** — any form submit / status / async result announces via `aria-live="polite"` (or `role="status"`; `alert` only for time-critical), present at load with content swapped inside; never a silent handler or a bare `alert()`.
+- **`lang`** on `<html>` (BCP-47, e.g. `lang="en"`); a **skip-to-main** link as the first focusable element on any page with `<nav>`/`<header>`.
 
 *SEO (public registers only — saas-landing, marketing, docs, e-commerce, editorial; **N/A for product-app / personal-portfolio**):*
 - A unique, descriptive `<title>` (~50–60 chars) + a unique meta description (~120–160) + a self-referential canonical; the `<h1>` + heading hierarchy above is shared with a11y.
@@ -171,7 +173,8 @@ The slop audit catches the *looks*; this catches the *behaviour* — the experie
 | No keyboard path / invisible focus | major | the primary action is unreachable by Tab, or `outline:none` with no replacement |
 | Validation on every keystroke | major | a red error on the first character, before the user has finished typing |
 | Dead-end empty/error state | major | "No data" / "An error occurred" with no cause and no next step |
-| Generic microcopy | major | "Something went wrong" / "Submit" / "No items" instead of specific, actionable copy |
+| Generic microcopy | major | "Something went wrong" / "Payment failed" / "Submit" / "No items" instead of copy that names the failure + next step ("Card declined — try another card or contact your bank") |
+| Vague social proof | minor | "loved by millions" / "industry-leading" instead of named, specific proof ("Trusted by 2,000+ teams"; real logos/metrics) |
 | Motion ignores reduced-motion | major | animation/parallax with no `prefers-reduced-motion` guard |
 | Dark pattern | critical | confirmshaming · a fake-urgency countdown · preselected paid add-ons · roach-motel cancel · hidden costs · disguised ads — psychology used *against* the user |
 
