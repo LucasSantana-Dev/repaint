@@ -339,6 +339,35 @@
         "Going back or canceling the upgrade is easy and does not trap the user (no roach-motel)",
         "A declined-card error is specific and actionable ('Card declined — try another card or contact your bank'), not 'Something went wrong'"
       ]
+    },
+    {
+      "id": 23,
+      "prompt": "Build a small analytics widget card for our React dashboard — a title, a sparkline-style chart, a big metric number, and a trend arrow. It needs to drop into our existing app and just work; we use Tailwind.",
+      "expected_output": "A self-contained, compile-clean React component that runs on the first try. Should: import only allowlisted/installed packages (no phantom dependency), use a real charting approach (recharts or inline SVG) with correctly-named imports, use a real icon set (lucide-react) NOT an emoji for the trend arrow, default-export an entry that renders, and avoid sandbox-breaking patterns (top-level fetch/localStorage, external link/script).",
+      "files": [],
+      "assertions": [
+        "Does not import any package that is not a well-known installed/allowlisted dependency (no phantom or undeclared imports)",
+        "Every named import (icons, chart components) is a real export of its package — no invented symbols",
+        "Uses a real icon (e.g. lucide-react) or inline SVG for the trend indicator, NOT an emoji as a UI icon",
+        "The chart uses recharts or inline SVG, not an undeclared chart library",
+        "The component default-exports and renders without required props",
+        "No top-level fetch/localStorage or external <link>/<script src> that would break a sandbox; data is inlined or mocked",
+        "Output is compile-clean: className not class, closed tags, and apostrophes that do not break string literals"
+      ]
+    },
+    {
+      "id": 24,
+      "prompt": "I want a landing hero for my new developer-focused API product, but I'm not sure on the visual direction yet — show me some options before you build it.",
+      "expected_output": "A design-then-code response. Should: name 2-3 distinct candidate anchor/variant directions (e.g. Linear-calm vs Stripe-editorial vs a warmer direction) each with a one-line trade-off, commit to ONE, write the locked register/anchor/token table to a DESIGN.md as the approval checkpoint, THEN build the chosen direction — not jump straight to a single generic hero.",
+      "files": [],
+      "assertions": [
+        "Presents 2-3 distinct, named candidate directions or anchors before committing, not a single take",
+        "Each candidate direction carries a brief trade-off or rationale, not just a label",
+        "Commits to ONE direction and builds that, rather than leaving the choice unresolved",
+        "Writes or updates a DESIGN.md capturing the locked register, anchor, and token table",
+        "The built hero's tokens match the selected direction, not a different or contradictory palette",
+        "Avoids generic AI-hero tells: no purple-to-pink/blue gradient, and Inter is not the default body font"
+      ]
     }
   ]
 }

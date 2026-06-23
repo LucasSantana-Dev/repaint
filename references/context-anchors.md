@@ -323,6 +323,40 @@ The cognitive science under elite products — *why* the patterns in §F/§G wor
 
 ---
 
+## K. Compile-clean contract (guaranteed-runnable output)
+
+The output must *run on the first try*, not merely look right — the discipline behind Claude Artifacts (single-file, import-allowlist, no build step) and v0's autofixer (it exists to fix the import/icon/type class post-generation). Lint against this **before** browser-verify (Gate 7), fix every violation, then render.
+
+**Detect the mode first:**
+- **Self-contained** — a single artifact, no build step, a preview sandbox: everything inlines; only the preloaded allowlist is importable; the entry component must render with zero required props.
+- **Project-scaffold** — the surface lands in an existing app with a bundler: the "allowlist" is *whatever is in `package.json`*; never import a dependency that isn't declared there.
+
+**Import allowlist**
+- *Self-contained:* `react` / `react-dom`, and only well-known sandbox/CDN-preloaded libs — `lucide-react` (icons), `recharts` / `d3` (charts), `framer-motion` (motion), `clsx`/`classnames`, `date-fns`, `lodash`. Tailwind via the play CDN or inline styles. Nothing else.
+- *Project-scaffold:* only packages already in `package.json`. If a needed lib is absent, either add it explicitly (and say so in the report) or implement without it — never emit a bare import to an undeclared package.
+- Icons come from the project's `iconLibrary` (shadcn) or the allowlisted icon set — **never emoji as UI icons**, never an icon import that isn't installed.
+
+**Forbidden patterns (instant fix before verify)**
+| Pattern | Why it breaks | Fix |
+|---|---|---|
+| Import of a non-allowlisted / undeclared package | module-not-found at build | use an allowlisted lib or add the dep explicitly |
+| A *named* import the package doesn't export (e.g. a `lucide-react` icon that isn't real) | named-export error — the #1 thing v0's autofixer catches | verify the symbol exists before using it |
+| `<link rel=stylesheet>` / `<script src>` to an external URL (self-contained) | blocked in sandbox | inline the styles/script |
+| Top-level `fetch`/XHR/WebSocket at module load (sandbox) | network blocked / crash on mount | gate behind an effect or handler; mock the data |
+| `localStorage`/`sessionStorage` in a sandboxed artifact | unavailable in the sandbox | use React state |
+| Default export with required props | the preview entry renders with none | default the props or make the entry prop-free |
+| `class=` in JSX, unclosed/mismatched tags | compile error | `className`; close every tag |
+| Apostrophe inside a single-quoted JS/TS string | string terminates early | Phase-3 string rule — double-quote/template the whole value, never touch the apostrophe |
+| Undeclared identifier · conditional hook · missing return | TS/JSX won't compile | declare it; hooks at top level; return JSX |
+
+**Pre-verify lint (the builder runs this, then browser-verifies)**
+1. Every `import` → allowlisted or in `package.json`? Each *named* symbol real?
+2. Grep the diff for the forbidden patterns above.
+3. Self-contained: the entry component default-exports and renders with zero props.
+4. *Then* run the dev server / browser-verify — the lint kills the import/compile class cheaply; the browser is for runtime + visual.
+
+---
+
 ## Sources (condensed)
 Dribbble/Mobbin/SaaS-gallery context research, Figma Community + design-system docs (Material 3,
 Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/editorial trend writeups
