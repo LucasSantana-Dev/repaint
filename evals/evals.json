@@ -276,6 +276,38 @@
         "The dialog is semantic and keyboard-operable: Esc closes it and focus returns to the trigger on close",
         "Copy is specific and buttons are clearly labeled ('Delete' / 'Cancel'), never just 'Yes' / 'No'"
       ]
+    },
+    {
+      "id": 19,
+      "prompt": "Build a blog article page for 'The Hidden Costs of Rushing a Software Project' — a header with site nav, the article (title, author, publish date, a featured chart image, a couple of section headings, and a decorative divider image), an inline 'Subscribe' form (email + button), and a footer. Use realistic content. Make it usable by screen-reader and keyboard users.",
+      "expected_output": "A marketing/editorial page built on a correct semantic foundation. Should: use landmark regions (<header>, <nav>, <main>, <footer>); have exactly one <h1> (the article title) with a logical heading order for the sections (no level skips); give the email input a real associated <label> (not placeholder-as-label); give the featured chart a descriptive alt that states its insight and the decorative divider alt=''; use a semantic <button> for Subscribe (not <div onClick>) with a visible focus ring; set lang on <html>; include a skip-to-main link; and announce the subscribe success/error in an aria-live region. Realistic content, not Lorem ipsum.",
+      "files": [],
+      "assertions": [
+        "Uses landmark regions: <header>, <nav>, <main>, and <footer> (not <div> soup)",
+        "Has exactly one <h1> (the article title) and a logical heading order for sections (no level skips like <h1> to <h3>)",
+        "The email input has a real, programmatically associated <label> (for/id or wrapping), not a placeholder used as the label",
+        "The featured/content image has descriptive alt conveying its meaning; the decorative divider image uses alt=\"\" (present but empty)",
+        "The Subscribe control is a semantic <button>/<a> (not <div onClick>) and shows a visible focus indicator",
+        "The <html> element has a lang attribute, and the page includes a skip-to-main-content link",
+        "The subscribe success/error status is exposed to screen readers via an aria-live region (or role=status/alert), not only visual text",
+        "Content is realistic (about rushing a software project), not Lorem ipsum"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Build a SaaS landing page for Beacon, a project-management tool: a hero (headline, subhead, primary CTA), a 3-feature section, a 3-tier pricing block, an FAQ, and a footer. It's a public marketing page — make it search-ready and shareable. Output the page including its document <head>.",
+      "expected_output": "A saas-landing page that is SEO-ready. Should: include a unique descriptive <title> (~50-60 chars) and a unique meta description (~120-160 chars); exactly one <h1> stating the product's purpose with <h2> sections; Open Graph tags (og:title, og:description, an absolute og:image URL, og:type) + twitter:card='summary_large_image'; a self-referential absolute canonical; semantic landmarks; JSON-LD structured data (Product/Offer for the tiers and/or Organization, ideally via @graph); descriptive link/CTA text ('Start free trial', not 'click here'); a viewport meta; and image alt text. It must NOT include a <meta keywords> tag or keyword-stuffed copy.",
+      "files": [],
+      "assertions": [
+        "Includes a unique, descriptive <title> roughly 50-60 characters stating the product's purpose (not 'Home' / 'Untitled')",
+        "Includes a unique <meta name=\"description\"> roughly 120-160 characters in plain language",
+        "Has exactly one <h1> matching the product's purpose, with <h2> section headings (Features, Pricing, FAQ)",
+        "Includes Open Graph tags (og:title, og:description, an absolute og:image URL, og:type) and twitter:card='summary_large_image'",
+        "Includes a self-referential, absolute <link rel=\"canonical\">",
+        "Includes JSON-LD structured data appropriate to the page (Product/Offer for the pricing tiers and/or Organization) as a valid <script type=\"application/ld+json\"> block",
+        "Uses semantic landmarks (<header>/<nav>/<main>/<footer>), descriptive CTA/link text ('Start free trial', not 'click here'), and a <meta name=\"viewport\">",
+        "Does NOT include a <meta name=\"keywords\"> tag and does not keyword-stuff the title or copy"
+      ]
     }
   ]
 }

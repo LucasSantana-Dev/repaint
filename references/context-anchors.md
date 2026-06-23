@@ -206,6 +206,47 @@ Voice matches the register: supportive (Slack, Mailchimp), professional (Stripe,
 
 ---
 
+## H. Accessibility & SEO
+
+**One semantic-HTML foundation serves both.** What a screen reader reads is what a crawler reads — landmark regions, a logical heading hierarchy, real labels, and meaningful alt text make a page navigable for assistive tech *and* parseable for search. Accessibility applies to **every register**; SEO applies to **public surfaces** (saas-landing, marketing, docs, e-commerce, editorial) and is **N/A for product-app / personal-portfolio** (post-login / private — crawlers don't and shouldn't reach them; internal a11y still applies). Backs **Gate 6** and the **a11y/SEO audit**. (Contrast/focus/touch live in Gate 3; keyboard, focus management, and reduced-motion in Gate 4/5 — not repeated here.)
+
+### Accessibility — the structural / semantic layer (every register)
+- **Landmarks** — `<header>`, `<nav>`, exactly one `<main>` (the unique content), `<footer>`; `<article>`/`<section>` for grouping. Real elements over `<div>` soup. **Native HTML before ARIA** — ARIA fills a gap native HTML can't express; it is not a default.
+- **Headings** — exactly one `<h1>` (the page's purpose), then `<h2>` → `<h3>` with no level skips; descriptive, not "Section 1".
+- **Forms** — every control has a real `<label>` (via `for`/`id` or wrapping), visible, never placeholder-as-label; errors set `aria-invalid="true"` + `aria-describedby` pointing to a persistent, specific message.
+- **Images** — content images carry concise, descriptive `alt` (a chart's *insight*: `alt="Revenue up 23% YoY"`, not "Chart"); decorative images use `alt=""` (present but empty), never omitted.
+- **Custom widgets** — expose **name / role / value** (`role`, `aria-label`/`aria-labelledby`, and state via `aria-checked` / `aria-expanded` / `aria-selected` / `aria-valuenow`); document the interaction model in `DESIGN.md`.
+- **Live updates** — async/optimistic changes ("Saving…" → "Saved", a new message, a refreshed metric) live in an `aria-live="polite"` region (present at load, content swaps inside it); `assertive` only for time-critical alerts.
+- **Page basics** — `lang` on `<html>` (BCP-47, e.g. `lang="en"`); a **skip-to-main** link as the first focusable element (visible on focus, never `display:none`) on nav-heavy pages; no positive `tabindex` (use `0`/`-1` + DOM order).
+
+### SEO — public registers only
+- **Head** — a unique, descriptive `<title>` (~50–60 chars, purpose-forward, not "Untitled"); a unique `<meta name="description">` (~120–160 chars, plain language + soft CTA); a **self-referential, absolute** `<link rel="canonical">` (resolves `?utm=`/sort/filter variants; no canonical chains).
+- **Social** — Open Graph (`og:title`, `og:description`, `og:image` [absolute URL, ~1200×630, static], `og:url`, `og:type`) + Twitter (`twitter:card="summary_large_image"`), all in the server-rendered HTML.
+- **Structure** — the shared `<h1>` + heading hierarchy + landmarks; **descriptive link text** (the destination, never "click here" / "read more"); `<meta name="viewport" content="width=device-width, initial-scale=1">`.
+- **Crawlable** — title / H1 / body present in the **server-rendered** HTML (SSR/SSG), not client-JS-only; nothing critical hidden via `display:none` / `opacity:0`.
+- **Never** — a `<meta name="keywords">` tag (dead since ~2009; a spam signal), keyword-stuffed titles/copy/anchors, doorway/thin pages, or canonical chains.
+
+### JSON-LD structured data by context
+| Context | schema.org type |
+|---|---|
+| SaaS / product landing | `Product` + `Offer` (per tier) + `Organization` (combine via `@graph`) |
+| Blog / editorial / article | `Article` / `BlogPosting` (headline, datePublished, author) |
+| Docs — FAQ / help | `FAQPage` (Q&A pairs) |
+| Docs — multi-page reference | `BreadcrumbList` (matches the real path) |
+| E-commerce product | `Product` + `Offer` + `AggregateRating` (omit ratings if none exist) |
+| Any site identity | `Organization` (name, logo, contactPoint, sameAs) |
+
+### Core Web Vitals (a ranking factor — keep it light, not a perf budget)
+Targets (2026): **LCP ≤2.0s · INP ≤200ms · CLS <0.1**, on real-user data (Search Console CrUX), mobile + desktop. SEO's job is to *meet* the thresholds (reserve image space to avoid CLS, keep handlers <200ms, don't render-block the LCP element); per-asset optimization is a separate discipline — don't spec it here.
+
+### Verify
+- **axe-core / axe DevTools / WAVE** — WCAG 2.2 issues (headings, landmarks, labels, alt, name/role/value).
+- **Lighthouse SEO** (mobile + desktop) — title, meta, crawlable links, viewport.
+- **Rich Results Test / schema validator** — the JSON-LD parses and matches its type.
+- **OG/Twitter preview** (opengraph.xyz, platform debuggers) — the card renders (image not broken, text not truncated).
+
+---
+
 ## Sources (condensed)
 Dribbble/Mobbin/SaaS-gallery context research, Figma Community + design-system docs (Material 3,
 Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/editorial trend writeups
@@ -224,3 +265,9 @@ the Doherty threshold / optimistic-UI + skeleton-vs-spinner writeups (LogRocket,
 default" catalogue (Frontend Masters), and destructive-action / empty-state / form-validation-timing pattern
 guides (Smashing, Eleken, a11yblog). Exemplar interactions (Linear, Stripe, Raycast, Superhuman, Figma, Gmail)
 are illustrative; confirm specifics against each product.
+
+§H (accessibility & SEO, 2026-06-23) draws on the WCAG 2.2 spec + WebAIM checklist (1.1.1 non-text content,
+1.3.1 info & relationships, 2.4.1 bypass blocks, 3.3.1 error identification, 4.1.2 name/role/value, 4.1.3
+status messages), MDN ARIA live-regions, the semantic-HTML-for-accessible-SEO writeups, Google Search Central
+(Core Web Vitals — LCP ≤2.0s as of 2026, mobile-first indexing), schema.org / Rich Results, and the
+meta-keywords-are-dead + canonical-best-practice guides. SEO is register-gated to public surfaces.
