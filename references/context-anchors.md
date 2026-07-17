@@ -432,6 +432,31 @@ The output must *run on the first try*, not merely look right — the discipline
 - **Weak reduced-motion** — `prefers-reduced-motion` must *disable* the motion (or swap to a fade), not merely "reduce" it.
 - **Decorative scroll rails / progress bars** that clash with the register or overflow heading text.
 
+**Native platform motion (2025-2026, minimal JS)**
+- Scroll-driven CSS: `animation-timeline: view()` (reveal-on-scroll) or `scroll()` (scrub), with `animation-range: entry 0% cover 35%`. GPU-cheap, zero library. Gate behind `@supports (animation-timeline: view())`; else IntersectionObserver.
+- View Transitions: `document.startViewTransition(cb)` + `view-transition-name` for shared-element morphs; cross-document `@view-transition { navigation: auto }` gives app-like nav on a plain MPA. High signal, hard to copy.
+- Enter from first paint: `@starting-style` + `transition-behavior: allow-discrete`; `interpolate-size: allow-keywords` unlocks `height: auto` transitions.
+
+**Smoothing (the "expensive" tell)**
+- Never assign a target directly: lerp toward it each frame (`v += (target - v) * 0.15`) for cursor and parallax followers. Lenis for inertial scroll, feeding its progress to scroll-triggers. Smooth-scroll (inertia) is not scroll-jacking (fighting momentum): the first is fine, the second stays banned above.
+
+**Motion personality (pick one per project)**
+- Playful / Premium / Corporate / Energetic. Set spring + duration character to match: Premium reads heavier (`{stiffness:120,damping:22}`), Energetic snappier (`{400,35}`). Consistency across the page is the tell.
+
+**Layered motion budget**
+- primary (the action) / secondary (supporting) / ambient (background drift). Budget each separately; ambient stays compositor-only (`transform`/`opacity`), never per-frame JS.
+
+**Interruptibility**
+- Rapid or gesture-driven motion (toasts, toggles, drags) must retarget from current state, never restart from zero. Use CSS transitions or springs, not keyframes that replay from 0.
+
+**Motion a11y + performance budget (extends Gate 5 / §H)**
+- WCAG 2.3.3 Animation-from-Interactions (AAA): interaction-triggered motion must be disableable unless essential; document essential vs decorative.
+- Vestibular safety: parallax, zoom, and spin can cause dizziness or nausea; respect the OS reduce-motion setting (natural scroll is exempt).
+- INP budget: interactions land in <=200ms (good), >500ms is poor. 60fps = 16.67ms per frame; animate composited props only; measure with DevTools Performance + the Long Animation Frames API.
+
+**Named easing (beyond the §C tokens)**
+- ease-out-quart `cubic-bezier(.25,1,.5,1)` for default UI enter; ease-out-expo `(.16,1,.3,1)` for dramatic reveals; a stepped `linear(...)` curve for spring feel. Motion.dev (the Framer Motion successor) for 120fps React springs.
+
 ---
 
 ## Sources (condensed)
