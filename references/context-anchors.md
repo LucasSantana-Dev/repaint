@@ -459,6 +459,84 @@ The output must *run on the first try*, not merely look right — the discipline
 
 ---
 
+## M. Reference-hunt site directory (Gate 2 live lookup)
+
+Live galleries to pull real, current references from during Gate 2 — instead of anchoring off training-data
+memory alone. Grouped by what you're hunting for; each site is single-purpose, so pick by need, not habit.
+
+**General / curated galleries** — broad sweeps across categories, start here if the anchor is undecided
+- [curated.design](http://curated.design/) — web design
+- [godly.website](http://godly.website/) — full sites
+- [minimal.gallery](http://minimal.gallery/) — minimal/quiet register
+- [catalog.cool](http://catalog.cool/)
+- [inspora.design](http://inspora.design/)
+- [webpo.space](http://webpo.space/)
+- [mindsparklemag.com](http://mindsparklemag.com/)
+- [behance.net](http://behance.net/) — broad creative/visual work, not web-specific
+
+**Landing pages / SaaS**
+- [landing.love](http://landing.love/)
+- [purelanding.page](http://purelanding.page/)
+- [saaslandingpage.com](http://saaslandingpage.com/)
+- [saaspo.com](http://saaspo.com/) — SaaS websites
+- [saasframe.io](http://saasframe.io/)
+- [lad-book.com](http://lad-book.com/) — land-book, landing-page inspiration
+
+**Components / patterns** — for a specific piece, not a whole page
+- [navbar.gallery](http://navbar.gallery/)
+- [cta.gallery](http://cta.gallery/)
+- [bentogrids.com](http://bentogrids.com/)
+- [ogimage.gallery](http://ogimage.gallery/) — OG/share images
+- [component.gallery](http://component.gallery/) — design systems, cross-company pattern comparison
+
+**Motion**
+- [appmotion.design](http://appmotion.design/)
+- [60fps.design](http://60fps.design/)
+- [animejs.com](http://animejs.com/) — animation library, not a gallery
+
+**Mobile**
+- [mobbin.com](http://mobbin.com/) — mobile + web app screen flows
+
+**Brand / identity**
+- [rebrand.gallery](http://rebrand.gallery/)
+- [dieline.com](http://dieline.com/) — packaging design
+
+**Type**
+- [uncut.wtf](http://uncut.wtf/) — fonts
+
+**Icons**
+- [hugeicons.com](http://hugeicons.com/)
+
+**Portfolio**
+- [prettyfolio.com](http://prettyfolio.com/)
+
+**Email**
+- [reallygoodemails.com](http://reallygoodemails.com/)
+
+**Imagery / stock**
+- [lummi.ai](http://lummi.ai/) — AI-friendly stock photography
+
+**UX flows / maps**
+- [uxmaps.co](http://uxmaps.co/)
+
+**AI-agent-specific**
+- [styles.refero.design](http://styles.refero.design/) — high-quality DESIGN.md examples written for AI agents; read for token-spec/register-doc format, not visual inspiration
+- [vibeindex.dev](http://vibeindex.dev/) — directory of vibe-coding tools
+
+**Component libraries (buildable, not just reference)**
+- [ui.aceternity.com](http://ui.aceternity.com/) — React component library for landing pages
+
+**Misc tools**
+- [designmd-store.com](http://designmd-store.com/) — templates
+- [dynapictures.com](http://dynapictures.com/) — dynamic image generation
+- [iloveenhance.com](http://iloveenhance.com/) — AI image enhance
+- cosmos — visual bookmarking/moodboard tool (verify current domain before citing)
+
+Use like §A anchors: pick 1-2 sites matching the brief's register, pull 2-3 concrete references, name what's
+being stolen (layout, motion, type pairing) — never screenshot-and-clone wholesale.
+
+---
+
 ## Sources (condensed)
 Dribbble/Mobbin/SaaS-gallery context research, Figma Community + design-system docs (Material 3,
 Polaris, Carbon, Fluent 2, Ant, Primer, Mantine, Radix/shadcn), and foundry/editorial trend writeups
@@ -492,3 +570,7 @@ writeups. §J (psychology, 2026-06-23) draws on the Laws of UX / IxDF / NN/g tre
 Fitts, Miller, Jakob, Tesler, Von Restorff, serial-position, peak-end, Zeigarnik, goal-gradient and the
 Fogg model, Cialdini's principles applied ethically, and the FTC/GDPR-flagged dark-pattern taxonomy
 (careerfoundry, usercentrics, arXiv). Persuasion is included only in its honest form; manipulation is banned.
+
+§M (reference-hunt site directory) is an operator-curated link list, added 2026-08-13 verbatim from a
+personal bookmark set — not independently re-verified per site. Confirm a site still resolves before citing
+it as a source in a real anchor decision.
