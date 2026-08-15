@@ -161,6 +161,7 @@ Foundries to draw from (named, current): **Pangram Pangram, Grilli Type, Klim, C
 - **Color naming:** semantic tokens (`bg-surface`, `text-muted`, `border`, `accent`), one name → per-theme value. Dark mode is a first-class context, not a `dark:` afterthought; step surfaces +5–8% luminance.
 - **Accessibility:** 4.5:1 text / 3:1 UI+large; focus ring ≥2px at ≥3:1; touch targets ≥44px (24px is the AA floor).
 - **2026 color stance:** the field shifted from cool steely grays (2022) to **warm earthy neutrals + one restrained accent**. Tint neutrals; reserve saturation for a single accent. Concrete warm neutrals: wheat `#E3DAC9`, taupe `#CAB9A9`, warm gray `#908D87`; earthy accents: terracotta `#CC5959`, ochre `#E6B35A`, smokey-jade `#4A635D`.
+- **Premium-consumer palette ban:** the LLM default for cookware/wellness/artisan/luxury/DTC-home-goods briefs is warm beige/cream (`#f5f1ea`/`#f7f5f1`/`#efeae0`) + brass/clay/oxblood/ochre (`#b08947`/`#b6553a`/`#9a2436`) + espresso near-black (`#1a1714`) — this exact family is now the generic tell for the register, banned as a default reach. Rotate instead: cold luxury (silver-grey/chrome/smoke), forest (deep green/bone/amber), black-and-tan (off-black + warm tan, no beige), cobalt+cream, terracotta+slate, olive+brick+paper, or monochrome + one saturated pop. Don't reuse the same family across consecutive premium-consumer projects. Override only when the brand brief explicitly names the beige/brass palette.
 
 ---
 
@@ -182,6 +183,17 @@ shadow, em dashes, and emoji-as-icons. Add these, confirmed across 2026 trend so
 - **Over-animation on dense UI** — Framer Motion / Motion.dev / Spline make it trivial to animate everything; on dashboards, tables, and feeds that obscures scannability. Motion is for feedback and state change, not decoration on information-dense surfaces.
 - **Pixel / bitmap display fonts as body** *(critical)* — Geist Pixel and similar bitmap faces are a real 2026 trend but **logotype/campaign-only**; using them for body text, sustained reading, or any accessibility-critical copy is an instant tell.
 - **Variable fonts left at defaults** — loading a variable face (GT Flexa, etc.) but never setting weight/width/optical-size reads as "installed the tech without designing with it." Variable fonts demand intentional axis choices.
+- **Version/count eyebrows** — version labels (`V0.6`, `BETA`, `EARLY ACCESS`) as a default hero eyebrow, section-number eyebrows (`00 / INDEX`, `001 · Capabilities`), and `01 / 4`-style pagination on images/bento tiles — banned unless the brief is genuinely about launch/preview status or the count is functional (a real carousel index).
+- **Eyebrow ratio (mechanical)** — max 1 eyebrow (small uppercase/tracked label above a section headline) per 3 sections; hero counts as one. If section *n* has one, the next two can't. Pre-ship check: count `uppercase tracking`-style labels against section count; over the ratio, drop them — the headline alone is enough.
+- **Decoration text strips & scroll cues** — bottom-of-hero mono-caps strips (`BRAND. MOTION. SPATIAL.`), locale/weather strips (`LIS 14:23 · 18°C`), and scroll-cue affordances (`↓ scroll`, an animated mouse icon) are agency-portfolio tells. Drop them unless the strip is a real functional nav/status element, or the brief is explicitly travel/timezone-distributed.
+- **Split-header pattern** — a big left-aligned headline with a small explainer paragraph floating in the section header's top-right corner, unconnected to any visual, is a tell. Stack vertically instead (headline, then body, max `65ch`) unless the right column genuinely carries a visual or interactive element.
+- **Micro-decoration inflation** — the middle-dot (`·`) rationed to ≤1 per metadata line, not the default separator for everything; decorative colored status dots before every nav item/list row/badge with no real state behind them; generic step labels (`Stage 1/2/3`, `Phase 01/02/03` — the step's own content is the label); photo-credit-style captions (`Field study no. 12 · Ines Caetano`) on stock/generated images with no real credited photographer; fake version footers (`v1.4.2 · last sync 4s ago`) on marketing pages; live-stock counters (`Reservation 412 of 800`) without real backing data.
+- **Filled-track comparison bars** — a large `bg-zinc-200`-style filled-background progress bar used only to compare two numbers is dashboard clutter on a landing page. Prefer a number + small icon, or a thin bar with no background track.
+- **Layout repetition tells** — more than 2 consecutive image+text zigzag sections (the 3rd reads as templated rhythm); more than one horizontal marquee per page; a long spec/list table with a hairline under every single row (pick one divider style used sparely, or switch to grouped chunks / a 2-col card grid / featured-vs-rest disclosure).
+- **Hero mechanical constraints** — headline ≤2 lines desktop, subtext ≤20 words and ≤4 lines, top padding capped around `6rem` (more reads as content floating mid-viewport, not breathing room — fix with font/asset scale, not padding), and ≤4 total text elements (eyebrow-or-brand-strip *or* neither, headline, subtext, CTAs). No trust micro-strip, pricing teaser, or feature-bullet list stuffed into the hero — those get their own section directly below it, including the "Used by" logo wall.
+- **CTA discipline** — button label must fit one line at desktop (shorten to ≤3 words or widen the button, never wrap); one label per intent across the whole page ("Get in touch" *or* "Contact us", not both scattered across nav/hero/footer).
+- **Button/ghost contrast** — verify CTA text is legible against its own background before shipping: white-on-white buttons, a `bg-white` CTA with a `text-white` label, and borderless ghost buttons over photographic backgrounds with no scrim/stroke are the recurring failure. WCAG AA (4.5:1 body / 3:1 large) applies to buttons, not just body text.
+- **Jane Doe effect** — generic placeholder names ("John Doe"/"Sarah Chan"), generic egg/default-user-icon avatars, fake-perfect round numbers (`99.99%`, `50%`), and startup-slop invented brand names ("Acme"/"Nexus"/"SmartFlow") all read as generated. Use specific, organic, locale-appropriate substitutes (`47.2%`, names/brands that sound real).
 
 ---
 
@@ -252,6 +264,10 @@ High-stakes text is the cheapest UX win and the model's most generic output. Be 
 
 Voice matches the register: supportive (Slack, Mailchimp), professional (Stripe, Linear), terse (Raycast). **Never:** "Something went wrong" · "Invalid input" · "Error #5892" · "Submit" · "No data" · "Are you sure?".
 
+**Pre-ship copy self-audit.** Re-read every visible string (headlines, eyebrows, buttons, body, captions, alt text, errors) before calling it done. Flag and rewrite: grammatically broken lines, unclear referents, forced/cute AI-wordplay, or copy that reads like the model performing thoughtfulness — plain and functional beats clever-but-wrong.
+
+**One copy register per page.** Don't mix technical-mono, editorial prose, and marketing punch in the same composition unless the brand voice explicitly calls for the mix.
+
 ---
 
 ## H. Accessibility & SEO
@@ -262,6 +278,7 @@ Voice matches the register: supportive (Slack, Mailchimp), professional (Stripe,
 - **Landmarks** — `<header>`, `<nav>`, exactly one `<main>` (the unique content), `<footer>`; `<article>`/`<section>` for grouping. Real elements over `<div>` soup. **Native HTML before ARIA** — ARIA fills a gap native HTML can't express; it is not a default.
 - **Headings** — exactly one `<h1>` (the page's purpose), then `<h2>` → `<h3>` with no level skips; descriptive, not "Section 1".
 - **Forms** — every control has a real `<label>` (via `for`/`id` or wrapping), visible, never placeholder-as-label; errors set `aria-invalid="true"` + `aria-describedby` pointing to a persistent, specific message.
+- **Form contrast** — inputs, placeholder text, focus rings, helper text, and error text each independently pass WCAG AA against the section background; a light placeholder on a near-white form, or helper text grayer than 4.5:1, fails even when the field's own label passes.
 - **Images** — content images carry concise, descriptive `alt` (a chart's *insight*: `alt="Revenue up 23% YoY"`, not "Chart"); decorative images use `alt=""` (present but empty), never omitted.
 - **Custom widgets** — expose **name / role / value** (`role`, `aria-label`/`aria-labelledby`, and state via `aria-checked` / `aria-expanded` / `aria-selected` / `aria-valuenow`); document the interaction model in `DESIGN.md`.
 - **Live updates** — async/optimistic changes ("Saving…" → "Saved", a new message, a refreshed metric) live in an `aria-live="polite"` region (present at load, content swaps inside it); `assertive` only for time-critical alerts.
@@ -425,6 +442,9 @@ The output must *run on the first try*, not merely look right — the discipline
 - Animate **`transform` + `opacity` only** (`x`/`y`/`scale`/`rotate`). **Never animate** `width`/`height`/`top`/`left`/`margin`/`padding` — that thrashes layout.
 - `will-change: transform` only *while* animating; remove it after. High-frequency followers (cursor): batch with a `quickTo`-style setter, not per-frame React state.
 
+**Motivated motion (the reasoning gate)**
+- Before adding any animation, name what it communicates in one sentence: hierarchy (draws attention to the right thing), storytelling (reveals content in a sequence that matches a narrative), feedback (acknowledges a user action), or state transition (shows something changed). "It looked cool" isn't an answer — animating everything because the library is available is a tell, not craft. Can't name the reason → drop the animation.
+
 **Motion-slop tells (instant fix)**
 - **Oversaturation** — >3 simultaneous motion types on one element (scale + rotate + skew + …).
 - **Timing misalignment** — a stagger that doesn't divide evenly into the duration (reads jittery).
@@ -534,6 +554,26 @@ memory alone. Grouped by what you're hunting for; each site is single-purpose, s
 
 Use like §A anchors: pick 1-2 sites matching the brief's register, pull 2-3 concrete references, name what's
 being stolen (layout, motion, type pairing) — never screenshot-and-clone wholesale.
+
+---
+
+## N. Redesign mode (preserve vs. overhaul vs. greenfield)
+
+Misclassifying redesign mode is the biggest source of bad redesign output — detect it before Phase 0.
+
+- **Greenfield** — no existing site, or a full overhaul is explicitly approved. No preservation constraints.
+- **Preserve** — modernize without breaking the brand. Audit first, extract brand tokens, evolve gradually.
+- **Overhaul** — new visual language on existing content. Treat visuals as greenfield; preserve content/IA.
+
+If ambiguous, ask once: *"Should this preserve the existing brand, or start visually from scratch?"*
+
+**Audit before touching (preserve/overhaul):** document brand tokens (accent colors, type stack, logo, radii), IA (nav, conversion paths), content blocks (what's doing work vs. filler), patterns to keep (signature interactions, copy voice) vs. retire (slop tells, dead links, perf traps), and the SEO baseline (ranking pages, meta, structured data, OG cards — **SEO migration is the #1 redesign risk**, see §H).
+
+**Preservation rules (preserve mode):** don't change IA/slugs/nav labels/form field names unless asked — it breaks SEO, analytics, autofill, and muscle memory; extract and keep the existing brand color rather than reflexively applying §C/§D palette rules; don't rewrite copy voice unless asked — visual modernization ≠ content rewrite; don't regress existing accessibility wins.
+
+**Modernization levers, in priority order (stop when the brief is satisfied):** 1) typography refresh (biggest lift, lowest risk) → 2) spacing/rhythm → 3) color recalibration (desaturate, unify neutrals, keep the brand accent) → 4) motion layer (§L) → 5) hero/key-section recomposition → 6) full block replacement (only when unsalvageable).
+
+**Targeted evolution vs. full redesign:** IA/content/SEO sound → targeted evolution (levers 1–4), most of the value at a fraction of the risk. Visual debt is structural (broken IA, no system, broken mobile) → full redesign with strict content preservation. Brand itself is changing → greenfield.
 
 ---
 
