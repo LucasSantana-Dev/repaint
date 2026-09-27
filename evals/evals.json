@@ -371,16 +371,16 @@
     },
     {
       "id": 25,
-      "prompt": "Refresh the visual design of our product-app's settings page. The codebase already has a tokens.css file where every color has a comment above it explaining where it came from (a brand guideline, a logo swatch, or a prior owner decision), a docs/design-decisions.md file recording why the current palette and type were chosen, an ornament/ folder with existing decorative SVG patterns used across the app, and the settings page is already live in production. Make it look fresher.",
-      "expected_output": "A response that treats an identity inventory as the mandatory base of the brief, before any other research. Should: read the tokens.css color-origin comments, docs/design-decisions.md, the existing ornament/theme components, and a screenshot of the currently published settings page first; use these as the locked starting point rather than researching new references or inventing a competing palette/anchor; and only look at raw brand sources (like a logo file) after this inventory, if at all.",
+      "prompt": "Refresh the visual design of our product-app's settings page. The codebase already has a tokens.css file where every color has a comment above it explaining where it came from (a brand guideline, a logo swatch, or a prior owner decision), a docs/design-decisions.md file recording why the current palette and type were chosen, an ornament/ folder with existing decorative SVG patterns used across the app, a logo.svg brand asset, and the settings page is already live in production. Make it look fresher.",
+      "expected_output": "A response that treats an identity inventory as the mandatory base of the brief, before any other research or asset. Should: read the tokens.css color-origin comments, docs/design-decisions.md, the existing ornament/theme components, and the currently published settings page first, and explicitly cite that inventory as the base of the brief; keep the existing palette and type pairing rather than proposing new ones, since tokens.css and docs/design-decisions.md already record them; and only look at the raw logo.svg, if at all, after reading the published page, never before it.",
       "files": [],
       "assertions": [
-        "Output explicitly reads or references the existing tokens.css color-origin comments before proposing new colors",
+        "Output explicitly cites the identity inventory (tokens.css comments, design-decisions.md, ornament components, published page) as the base of the brief, not as optional background reading",
+        "Output does not propose a new color palette or a new type pairing, given that tokens.css and docs/design-decisions.md already record the existing ones",
+        "If the raw logo.svg is examined at all, output reads or references the published settings page before it, not the other way around",
+        "Output explicitly reads or references the existing tokens.css color-origin comments before touching any color decision",
         "Output explicitly reads or references docs/design-decisions.md as part of the brief's base, not as an afterthought",
-        "Output reuses or explicitly builds on the existing ornament/theme components rather than replacing them with newly invented decorative elements",
-        "Output treats an inventory of the current published page as mandatory input, not an optional 'may reuse existing assets' aside",
-        "Output does not jump straight to fresh web research or a new anchor before completing the identity inventory",
-        "Output does not silently discard or override the documented existing palette or tokens"
+        "Output reuses or explicitly builds on the existing ornament/theme components rather than replacing them with newly invented decorative elements"
       ]
     },
     {
