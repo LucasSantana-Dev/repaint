@@ -368,6 +368,48 @@
         "The built hero's tokens match the selected direction, not a different or contradictory palette",
         "Avoids generic AI-hero tells: no purple-to-pink/blue gradient, and Inter is not the default body font"
       ]
+    },
+    {
+      "id": 25,
+      "prompt": "Refresh the visual design of our product-app's settings page. The codebase already has a tokens.css file where every color has a comment above it explaining where it came from (a brand guideline, a logo swatch, or a prior owner decision), a docs/design-decisions.md file recording why the current palette and type were chosen, an ornament/ folder with existing decorative SVG patterns used across the app, a logo.svg brand asset, and the settings page is already live in production. Make it look fresher.",
+      "expected_output": "A response that treats an identity inventory as the mandatory base of the brief, before any other research or asset. Should: read the tokens.css color-origin comments, docs/design-decisions.md, the existing ornament/theme components, and the currently published settings page first, and explicitly cite that inventory as the base of the brief; keep the existing palette and type pairing rather than proposing new ones, since tokens.css and docs/design-decisions.md already record them; and only look at the raw logo.svg, if at all, after reading the published page, never before it.",
+      "files": [],
+      "assertions": [
+        "Output explicitly cites the identity inventory (tokens.css comments, design-decisions.md, ornament components, published page) as the base of the brief, not as optional background reading",
+        "Output does not propose a new color palette or a new type pairing, given that tokens.css and docs/design-decisions.md already record the existing ones",
+        "If the raw logo.svg is examined at all, output reads or references the published settings page before it, not the other way around",
+        "Output explicitly reads or references the existing tokens.css color-origin comments before touching any color decision",
+        "Output explicitly reads or references docs/design-decisions.md as part of the brief's base, not as an afterthought",
+        "Output reuses or explicitly builds on the existing ornament/theme components rather than replacing them with newly invented decorative elements"
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "We've built this hero section twice now and the owner rejected both: the first felt off-brand, the second was rejected as 'still not it, just make it look good this time.' Go ahead and build a third version now.",
+      "expected_output": "A response that refuses to start a third blind build. Should: recognize 2 consecutive rejections as the stop-rule trigger; NOT ship a third build on a fresh guess; instead propose returning to a recognition board: assembling existing pieces (official brand art, the current live page, stakeholder mocks, the prior rejected builds as negative controls) and asking the owner to pick 'closest / farthest' by number rather than describing what they want; and note that a mechanical gate would also block dispatch here since no anchor postdates the second rejection.",
+      "files": [],
+      "assertions": [
+        "Output recognizes 2 consecutive rejections and treats it as a hard stop rather than continuing to iterate",
+        "Output does not produce or describe a third built version before addressing the missing anchor",
+        "Output proposes returning to a recognition board with existing pieces (brand art, live page, stakeholder mocks, a rejected build as negative control), not asking the owner to describe a new look",
+        "Output frames the owner's response as picking by number (closest/farthest), not open-ended descriptive feedback",
+        "Output references or implies a mechanical stop-rule check blocking dispatch without a fresh, later anchor",
+        "Output does not treat 'make it look good this time' as sufficient direction to proceed"
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "Add a cute mascot character to our onboarding flow, drawn in our brand's pixel-art style. It should wave at the user on the welcome screen.",
+      "expected_output": "A response that never draws the mascot in SVG or code. Should: state that a character or mascot is never generated as inline SVG paths or code-drawn shapes by the agent; source the mascot from the project's official pixel-art assets, or from an image-generation model given those official assets as reference (recolor, new pose, swap a head); checking first whether the project's imagery policy allows AI-generated imagery, asking the owner if that policy is unstated; and if generating, describe a chroma-key cutout plus a numbered contact sheet for the owner to pick from, rather than dropping in one unreviewed image. Code should only handle geometry or procedural ornament, never the character itself.",
+      "files": [],
+      "assertions": [
+        "Output does not implement the mascot as inline SVG paths/shapes or a hand-coded vector character",
+        "Output sources the mascot from the project's official art assets, or from an image-generation model explicitly given those official assets as reference",
+        "Output checks or asks about the project's imagery policy before assuming AI-generated character art is allowed",
+        "If an image model is used, output describes a chroma-key cutout and a numbered contact-sheet review step rather than dropping in one unreviewed image",
+        "Output does not claim that drawing the character directly in code is an acceptable approach",
+        "Any procedural or code-drawn elements mentioned are limited to geometry or ornament (gradients, patterns), not the mascot itself"
+      ]
     }
   ]
 }
