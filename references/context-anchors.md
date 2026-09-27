@@ -207,6 +207,7 @@ shadow, em dashes, and emoji-as-icons. Add these, confirmed across 2026 trend so
 - **Mono (flavor/metrics):** JetBrains Mono, Geist Mono, GT America Mono, Söhne Mono.
 - **Never for body:** pixel/bitmap display faces (Geist Pixel) and any mono — logotype, code, and retro/zine campaigns only.
 - **2026 shift:** the field moved from geometric sans (Circular, Montserrat) to **neo-grotesque** — prefer Neue Montreal, Söhne, or the free Bricolage Grotesque for display/UI in systematic contexts.
+- **Anti-generic additions (2026-08):** mono com caráter: **Berkeley Mono** (usgraphics.com, paga; humanist-machine, terminal chic), **Departure Mono** (pixel-adjacent, grátis), **Commit Mono** (neutra, ligaturas opcionais, grátis); grotesks com identidade no **Fontshare (grátis)**: **Cabinet Grotesk** (terminais suaves, líder do "bouba grotesk"), **General Sans**, **Satoshi**. Regra: uma face "com opinião" no display OU no mono, nunca nas duas ao mesmo tempo.
 
 ---
 
@@ -574,6 +575,59 @@ If ambiguous, ask once: *"Should this preserve the existing brand, or start visu
 **Modernization levers, in priority order (stop when the brief is satisfied):** 1) typography refresh (biggest lift, lowest risk) → 2) spacing/rhythm → 3) color recalibration (desaturate, unify neutrals, keep the brand accent) → 4) motion layer (§L) → 5) hero/key-section recomposition → 6) full block replacement (only when unsalvageable).
 
 **Targeted evolution vs. full redesign:** IA/content/SEO sound → targeted evolution (levers 1–4), most of the value at a fraction of the risk. Visual debt is structural (broken IA, no system, broken mobile) → full redesign with strict content preservation. Brand itself is changing → greenfield.
+
+---
+
+## O. Characterful anchors, escaping the generic register (2026-08-21)
+
+When a brief says "não quero cara de IA", "com personalidade", "fora do padrão SaaS", or a §A anchor
+feels too safe, pull from this pool. These are PRODUCTION systems (2023-2026) whose identity survives
+the name-swap test. Values from teardowns (oh-my-design.kr, shadcn.io/design, Figma community): treat
+non-official hexes as `// approximate`, confirm against the live product before locking tokens.
+
+### Systems with strong personality
+
+- **Wise** (rebrand 2023, Ragged Edge): lime `#9FE870` sobre forest `#163300`; Wise Sans 900 só em
+  display, Inter no produto; pill buttons; "graphic tapestries" de textura colada. Register: fintech
+  global product+marketing. Steal: par verde-sobre-verde de alto contraste como identidade inteira.
+- **Headspace** (rebrand Italic Studio, 2024): cream `#F9F4F2` + charcoal `#2D2C2B` (nunca preto puro)
+  + um azul de ação `#0061EF`; Aperçu custom; radius 8-32 (pill), hairline borders, quase sem sombra.
+  Register: wellness/consumer. Steal: calor como estrutura, não decoração.
+- **Perplexity** (2024): parchment `#FDFBFA` + teal único `#016A71`; pesos 400-500 apenas (hierarquia
+  sem bold); sidebar fixa ~260px, conteúdo max-width 900px. Register: AI product. Steal: "invisible
+  brand", identidade por restrição, não por ornamento.
+- **Toss** (TDS, fintech coreana): azul `#3182F6`; zero sombras (elevação por opacidade); margens
+  30-32px em números financeiros; espaço = segurança. Register: product-app financeiro denso.
+- **Cash App**: verde `#00E013` + citron `#D8FF14`; Cash Sans (base Klim/Söhne com pontuação
+  arredondada); raios 2px/20px/999px; profundidade por blocos de cor chapados. Register: consumer
+  fintech Gen-Z. Steal: tríade de raios disciplinada + flat colorblock.
+- **Duolingo** (design.duolingo.com): verde `#58CC02` como ÚNICO saturado permitido em display;
+  ilustração geométrica de 4 formas básicas. Register: consumer/edu. Steal: uma cor de progresso, o
+  resto neutro.
+- **LINE Seed** (seed.line.me, SIL OFL grátis): CJK+Latin harmonizados, 5 pesos; `#06C755`; flat.
+  Register: plataforma global multi-idioma. Steal: tipografia própria gratuita com identidade real.
+- **Gumroad** (redesign 2021): neo-brutalismo de produção: canvas cream ~`#F4F4F0` `// approximate`,
+  contornos pretos grossos, sombras offset duras, cor saturada como pontuação. Register: creator
+  commerce anti-SaaS. Caveat de usabilidade: brutalismo caótico derruba task-success em páginas densas.
+  Use "disciplined brutalism" (grid firme por baixo do ruído).
+- **Nubank** (Nu Sans por Blackletra, 2024; illustration system 3.0 da Polar): transparência como
+  conceito; ilustração trust-forward, não cartunesca. Register: fintech LATAM.
+
+### Movimentos vivos em produção (2025-2026)
+
+- **Warm paper / nature distilled**: terra, argila, grão de filme via CSS, formas orgânicas;
+  Rifle Paper Co., claude.ai da Anthropic. O contraponto direto ao "AI blandness".
+- **Terminal chic / technical mono**: Berkeley Mono/Departure Mono, ASCII/box-drawing como ornamento,
+  grids de alto contraste; dev tools indie, security startups. Sinal de credibilidade na subcultura
+  builder; crossover mainstream esperado 2026.
+- **Neo-brutalismo disciplinado**: Gumroad como poster child; bordas pretas + sombras offset SOBRE
+  grid rígido. Evitar em superfícies informacionalmente densas.
+
+### Como usar
+
+Gate 2: quando a direção está aberta e o brief pede personalidade, monte as 2-3 variantes com ≥1
+âncora deste pool (ex.: *Perplexity-restraint · Headspace-warm · terminal-chic*), não só
+Linear/Stripe. §B continua dono do art-direction extremo; §O é para PRODUTO com identidade.
 
 ---
 
