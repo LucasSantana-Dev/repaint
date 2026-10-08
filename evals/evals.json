@@ -410,6 +410,50 @@
         "Output does not claim that drawing the character directly in code is an acceptable approach",
         "Any procedural or code-drawn elements mentioned are limited to geometry or ornament (gradients, patterns), not the mascot itself"
       ]
+    },
+    {
+      "id": 28,
+      "prompt": "Here is our signup form component. Polish it and make it production ready, keep the visual style, and list each issue you fixed.\n\n```tsx\nexport default function Signup(){return(<form className=\"card\"><label>Email<input type=\"text\" onPaste={e=>e.preventDefault()} /></label><label>Password<input type=\"password\" /></label><button style={{transition:'all .3s'}}>Sign up...</button><img src=\"/hero.png\" alt=\"\" /></form>)}\n```",
+      "expected_output": "A rewrite that fixes the Vercel Web Interface Guidelines issues the base audits miss: correct input type and autocomplete, paste allowed, transition properties listed instead of transition: all, the ellipsis character, and explicit image dimensions, with an itemized list of the fixes.",
+      "files": [],
+      "assertions": [
+        "Output uses type=\"email\" for the email field",
+        "Output sets autocomplete attributes on the inputs (for example email and new-password)",
+        "Output removes the onPaste preventDefault so pasting into the inputs works",
+        "Output replaces transition: all with an explicit list of properties",
+        "Output gives the image explicit width and height or an aspect-ratio",
+        "Output replaces the three-dot \"...\" with the ellipsis character or removes it",
+        "Output includes an itemized list of the issues it fixed"
+      ]
+    },
+    {
+      "id": 29,
+      "prompt": "Redesign the home page of our guild site. We are a volunteer instructors' company inside Habbo Hotel. Leadership says: 'the company is lost on visual identity, our only reference is the logo and the blue'. Our media kit has the official logo PNG and members' avatars come from the Habbo public API. Make it feel unique and professional, not like a generic AI site.",
+      "expected_output": "Gate 1 runs before any industry anchor: the identity source is the guild's own world (quoted diagnosis, official logo and avatars, Habbo pixel grammar, a theme from their culture with one genre reference for form and written exclusions), a signature family is named, the palette is one hue in shades with meaningful exceptions, and the industry anchor only governs structure.",
+      "files": [],
+      "assertions": [
+        "Output quotes the leadership diagnosis or restates it as the brief before choosing a direction",
+        "Output names the official logo PNG and the Habbo avatar API as identity sources before naming any industry anchor such as Linear or Stripe",
+        "Output picks a theme drawn from the guild's own world",
+        "Output uses at most one outside genre reference and uses it for form, not as the whole identity",
+        "Output does not use glassmorphism, a bento grid, a purple gradient or warm earthy neutrals as the identity",
+        "Output does not resize Habbo avatar images (native size or crop only)",
+        "Output records the identity source and signature family in DESIGN.md or an equivalent spec",
+        "Output builds the home page in the same response instead of stopping at a question or a BLOCKED line"
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "We run a small independent bakery app for pre-ordering bread at our two shops. We have no logo files or brand guide yet, just our name, Fermento. Build the landing page. It must not look like every other AI-generated startup site.",
+      "expected_output": "Gate 1 runs with no artifacts: the identity is derived from the product's domain and its users' craft (baking, fermentation, the two shops), stated as an assumption in one line, and the page is built in the same pass. No pixel or game rules are applied, and no trend is used as the identity.",
+      "files": [],
+      "assertions": [
+        "Output states an identity theme derived from baking or fermentation or the shops, as an assumption in one line",
+        "Output builds the landing page in the same response instead of stopping at a question or a BLOCKED line",
+        "Output does not apply pixel-art or game-sprite rules to the design",
+        "Output does not use glassmorphism, a bento grid or a purple gradient as the identity",
+        "Output records the identity theme in DESIGN.md or an equivalent spec"
+      ]
     }
   ]
 }

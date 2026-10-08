@@ -1,6 +1,6 @@
 # repaint evals
 
-23 evals in `evals.json` (canonical `assertions`-as-plain-strings format; fixtures in `files/`), runnable by [`agent-skills-eval`](https://www.npmjs.com/package/agent-skills-eval). They check that changes to the skill don't regress the six places a capable model gets frontend wrong unaided.
+31 evals in `evals.json` (canonical `assertions`-as-plain-strings format; fixtures in `files/`), runnable by [`agent-skills-eval`](https://www.npmjs.com/package/agent-skills-eval). They check that changes to the skill don't regress the six places a capable model gets frontend wrong unaided.
 
 ## Run
 
